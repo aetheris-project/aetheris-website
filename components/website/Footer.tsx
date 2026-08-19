@@ -21,6 +21,13 @@ const COLUMNS = [
       { label: "REST API", href: "https://docs.aetheris.enterprise/api/reference" },
       { label: "Status", href: "https://status.aetheris.enterprise" }
     ]
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Donate via PayPal", href: "https://paypal.me/LeonardoGalliITA" },
+      { label: "Self-hosted or custom", href: "#contact" }
+    ]
   }
 ];
 

@@ -107,8 +107,18 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Yes. Platform name, logos, theme variables, navigation, email templates, custom domains and integration modules are all configurable from the Admin Panel and persisted in PostgreSQL with a Redis cache."
   },
   {
+    question: "Is there a hosted (SaaS) version of Aetheris?",
+    answer:
+      "No. Aetheris has no hosted solution: every deployment runs on your own infrastructure. You choose between a fully self-hosted install or a custom semi self-hosted proposal where we operate and maintain the platform while you keep control of your data and servers."
+  },
+  {
     question: "Is Aetheris self-hostable?",
     answer:
-      "Yes. The aetheris-app repository ships a non-interactive installer for Ubuntu 22.04 LTS and Debian 12 with PostgreSQL 16, Redis 7, Nginx reverse proxy and Systemd worker units."
+      "Yes. The aetheris-app repository ships a non-interactive installer for Ubuntu 22.04 LTS and Debian 12 with PostgreSQL 16, Redis 7, Nginx reverse proxy and Systemd worker units. Docker images are also provided for all operating systems, including Windows."
+  },
+  {
+    question: "Can I donate to support the project?",
+    answer:
+      "Yes, donations are welcome. You can support the project with a PayPal donation at https://paypal.me/LeonardoGalliITA - every contribution helps keep the platform free and self-hosted."
   }
 ];

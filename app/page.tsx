@@ -6,6 +6,7 @@ import {
   Clock,
   CreditCard,
   Globe,
+  Heart,
   LayoutGrid,
   Mail,
   Monitor,
@@ -462,8 +463,11 @@ export default function HomePage() {
                 </h2>
                 <p className="mt-4 max-w-xl text-pretty leading-7 text-muted">
                   No pricing pages, no commitment - just a conversation about
-                  your infrastructure. Tell us where you are today and where
-                  you want to be, and we will show you how Aetheris fits.
+                  your infrastructure. Aetheris has no hosted solution: it is
+                  always self-hosted on your own infrastructure, or delivered
+                  as a custom proposal for a semi self-hosted setup where we
+                  operate and maintain the platform while you keep control of
+                  your data and servers.
                 </p>
 
                 <div className="mt-10 space-y-4">
@@ -544,6 +548,15 @@ export default function HomePage() {
                 <Monitor className="h-4 w-4" aria-hidden="true" />
                 Get the source
               </Link>
+              <a
+                href="https://paypal.me/LeonardoGalliITA"
+                className="aetheris-btn-ghost h-12 px-6 text-[15px]"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Heart className="h-4 w-4 text-accent" aria-hidden="true" />
+                Donate via PayPal
+              </a>
             </div>
           </div>
         </section>
