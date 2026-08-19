@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState
 } from "react";
 import type { ReactNode } from "react";
@@ -51,18 +52,24 @@ function readStoredTheme(): ThemeName {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeName>("dark");
   const [resolved, setResolved] = useState<ResolvedTheme>("dark");
+  const hydratedRef = useRef(false);
 
-  // Hydrate the stored preference after mount.
+  // Hydrate the stored preference after mount and apply it immediately, so
+  // the sync effect below never runs against the SSR-defaulted state.
   useEffect(() => {
     const stored = readStoredTheme();
     setThemeState(stored);
     const next = stored === "system" ? systemResolved() : stored;
     document.documentElement.setAttribute("data-theme", next);
     setResolved(next);
+    hydratedRef.current = true;
   }, []);
 
-  // Keep the document root and media query listener in sync.
+  // Keep the document root and media query listener in sync. Skipped on the
+  // very first run (hydration already applied the stored theme); the state
+  // update from the mount effect re-runs this effect with the real value.
   useEffect(() => {
+    if (!hydratedRef.current) return;
     const media = window.matchMedia("(prefers-color-scheme: light)");
     const apply = () => {
       const next: ResolvedTheme = theme === "system" ? (media.matches ? "light" : "dark") : theme;

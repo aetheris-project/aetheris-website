@@ -13,11 +13,11 @@ import { ProvisioningPanel } from "@/components/website/demo/panels/Provisioning
 
 type DemoTabId = "vnc" | "nodes" | "provision" | "billing";
 
-const TABS: Array<{ id: DemoTabId; label: string; icon: typeof Monitor }> = [
-  { id: "vnc", label: "Client VNC Console", icon: Monitor },
-  { id: "nodes", label: "Admin Node Manager", icon: Server },
-  { id: "provision", label: "Provisioning", icon: Rocket },
-  { id: "billing", label: "Billing Engine", icon: CreditCard }
+const TABS: Array<{ id: DemoTabId; label: string; short: string; icon: typeof Monitor }> = [
+  { id: "vnc", label: "Client VNC Console", short: "Console", icon: Monitor },
+  { id: "nodes", label: "Admin Node Manager", short: "Nodes", icon: Server },
+  { id: "provision", label: "Provisioning", short: "Deploy", icon: Rocket },
+  { id: "billing", label: "Billing Engine", short: "Billing", icon: CreditCard }
 ];
 
 const ACCENT_SWATCHES: Array<{ id: AccentName; label: string; color: string }> = [
@@ -123,7 +123,7 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
                 >
                   <Icon className={cn("h-4 w-4", active ? "text-accent" : "")} aria-hidden="true" />
                   <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.label.split(" ")[0]}</span>
+                  <span className="sm:hidden">{tab.short}</span>
                 </button>
               );
             })}

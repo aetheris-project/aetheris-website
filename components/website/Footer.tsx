@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useWhitelabel } from "@/lib/theme/WhitelabelProvider";
 
@@ -34,8 +35,7 @@ export function Footer() {
         <div className="space-y-4 md:col-span-2">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-[10px] bg-raised ring-1 ring-edge">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/icon.png" alt="" className="h-full w-full object-cover" />
+              <Image src="/icon.png" alt="" width={32} height={32} className="h-full w-full object-cover" />
             </span>
             <span className="text-[15px] font-semibold tracking-tight">{config.brand.name}</span>
           </div>

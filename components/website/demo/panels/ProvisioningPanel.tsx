@@ -70,20 +70,25 @@ export function ProvisioningPanel() {
     setActiveStage(0);
     setResult(null);
 
+    timerRef.current = setInterval(() => {
+      setActiveStage((current) => Math.min(current + 1, PROVISION_STAGES.length - 1));
+    }, STAGE_DURATION_MS);
+
     void mockDriver.provisionServer({
       templateId: selectedTemplate,
       nodeId: selectedNode,
       planId: selectedPlan
     }).then((nextResult) => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+      setActiveStage(PROVISION_STAGES.length - 1);
       setResult(nextResult);
       setDeployments((current) => [nextResult, ...current].slice(0, 4));
       toast.show(`${nextResult.name} is online at ${nextResult.ipv4}.`, "success");
       setStep("done");
     });
-
-    timerRef.current = setInterval(() => {
-      setActiveStage((current) => Math.min(current + 1, PROVISION_STAGES.length - 1));
-    }, STAGE_DURATION_MS);
   }
 
   function reset() {
