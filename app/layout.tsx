@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.png", type: "image/png", sizes: "512x512" }],
+    shortcut: "/favicon.ico",
+    apple: "/app-icon.png",
     other: {
       rel: "icon",
-      type: "image/svg+xml",
-      url: "/icon.svg"
+      type: "image/png",
+      url: "/icon.png"
     }
   },
   openGraph: {
