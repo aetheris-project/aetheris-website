@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-19",
+  "addons": [
+    {
+      "id": "gateway-coinbase",
+      "name": "Coinbase Commerce",
+      "category": "payment-gateway",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "Accept crypto payments (BTC, ETH, USDC) through Coinbase Commerce.",
+      "state": "accepted",
+      "pr": 1,
+      "installations": 0
+    },
+    {
+      "id": "gateway-adyen",
+      "name": "Adyen",
+      "category": "payment-gateway",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "Global payments platform with 250+ local payment methods.",
+      "state": "accepted",
+      "pr": 2,
+      "installations": 0
+    },
+    {
+      "id": "gateway-braintree",
+      "name": "Braintree",
+      "category": "payment-gateway",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "PayPal-owned gateway for cards, PayPal and venmo.",
+      "state": "accepted",
+      "pr": 3,
+      "installations": 0
+    },
+    {
+      "id": "notify-slack",
+      "name": "Slack notifications",
+      "category": "notification",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "Send billing, provisioning and alert messages to Slack channels.",
+      "state": "accepted",
+      "pr": 4,
+      "installations": 0
+    },
+    {
+      "id": "notify-telegram",
+      "name": "Telegram notifications",
+      "category": "notification",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "Deliver platform alerts to a Telegram bot chat.",
+      "state": "accepted",
+      "pr": 5,
+      "installations": 0
+    },
+    {
+      "id": "notify-discord",
+      "name": "Discord notifications",
+      "category": "notification",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "Post embeds with server events and billing alerts to Discord webhooks.",
+      "state": "accepted",
+      "pr": 6,
+      "installations": 0
+    },
+    {
+      "id": "utility-webhook-logger",
+      "name": "Webhook logger",
+      "category": "utility",
+      "version": "1.0.0",
+      "author": { "name": "Leonardo Galli", "github": "Leo-Galli" },
+      "license": "MIT",
+      "description": "Fan out platform events to arbitrary HTTP endpoints with retries.",
+      "state": "accepted",
+      "pr": 7,
+      "installations": 0
+    }
+  ]
+}

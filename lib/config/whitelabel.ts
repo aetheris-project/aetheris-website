@@ -86,6 +86,7 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
   navigation: [
     { label: "Product", href: "#product", cta: false },
     { label: "Live Demo", href: "/demo", cta: false },
+    { label: "Store", href: "/store", cta: false },
     { label: "Integrations", href: "#integrations", cta: false },
     { label: "Contact", href: "#contact", cta: false },
     { label: "Documentation", href: "https://docs.aetheris.enterprise", cta: false },
