@@ -78,9 +78,17 @@ export function Footer() {
           <p>
             Copyright {year} {config.brand.name}. All rights reserved.
           </p>
-          <p className="font-mono text-[11px]">
-            v1.0.0 - billing and virtualization control plane
-          </p>
+          <div className="flex flex-col gap-1 text-right sm:items-end">
+            <p className="font-mono text-[11px]">
+              v1.0.0 - billing and virtualization control plane
+            </p>
+            <p>
+              Licensed under the{" "}
+              <Link href="/#license" className="text-muted transition-colors duration-200 hover:text-ink">
+                Aetheris License v1.0
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

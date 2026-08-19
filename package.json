@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Aetheris marketing site, interactive product demo, dynamic SEO and landing page.",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

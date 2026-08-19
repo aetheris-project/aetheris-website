@@ -35,6 +35,7 @@ export function productJsonLd(config: WhitelabelConfig): JsonLdNode {
     brand: { "@type": "Brand", name: config.brand.name },
     category: "Billing and Virtualization Management Software",
     applicationCategory: "BusinessApplication",
+    license: `${SITE_URL}/#license`,
     offers: {
       "@type": "Offer",
       url: SITE_URL,
@@ -69,7 +70,8 @@ export function softwareApplicationJsonLd(config: WhitelabelConfig): JsonLdNode 
       "Client VNC console",
       "Dynamic whitelabeling",
       "Stripe, PayPal and Mollie payment orchestration"
-    ]
+    ],
+    license: `${SITE_URL}/#license`
   };
 }
 
@@ -120,5 +122,15 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "Can I donate to support the project?",
     answer:
       "Yes, donations are welcome. You can support the project with a PayPal donation at https://paypal.me/LeonardoGalliITA - every contribution helps keep the platform free and self-hosted."
+  },
+  {
+    question: "What license is Aetheris released under?",
+    answer:
+      "Aetheris is released under the Aetheris License v1.0, a source-available license. You may use, study, modify and share it for your own purposes, but the core, the Aetheris name and the author's credit (Leonardo Galli / Leo-Galli) may not be removed, and the software may not be sold without written permission."
+  },
+  {
+    question: "Can I whitelabel Aetheris if the license requires attribution?",
+    answer:
+      "Yes. Whitelabeling is a built-in product feature that rebrands the interface of your own deployed instance, and is fully supported. The attribution requirement of the Aetheris License v1.0 applies to redistributed copies and derivative works: if you share or resell a copy of the software, the Aetheris name and the author's credit must be kept."
   }
 ];

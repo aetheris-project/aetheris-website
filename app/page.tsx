@@ -524,6 +524,58 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* License */}
+        <section id="license" className="relative overflow-hidden border-y border-edge bg-surface">
+          <div className="absolute -left-32 top-1/2 h-72 w-72 -translate-y-1/2 glow-accent opacity-60" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="aetheris-kicker">License</p>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
+                Source-available. Yours to build on.
+              </h2>
+              <p className="mt-5 text-pretty leading-7 text-muted">
+                Aetheris is released under the{" "}
+                <span className="font-semibold text-ink">Aetheris License v1.0</span>.
+                You can read, study, modify and share the source code for your
+                own purposes - but the core, the Aetheris name and the credit to
+                the author (Leonardo Galli / Leo-Galli) always stay, and the
+                software can never be sold.
+              </p>
+            </div>
+            <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+              {[
+                {
+                  title: "Modify and share",
+                  description: "Use and extend the code freely for your own projects. Contributions are welcome."
+                },
+                {
+                  title: "Attribution required",
+                  description: "The Aetheris name and the author's credit may not be removed from any copy or derivative."
+                },
+                {
+                  title: "No commercial resale",
+                  description: "The software may not be sold, licensed for a fee or otherwise monetized without written permission."
+                }
+              ].map((item) => (
+                <div key={item.title} className="aetheris-card aetheris-card-hover p-6 text-left">
+                  <h3 className="text-sm font-semibold tracking-tight">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <a
+                href="https://github.com/aetheris-project/aetheris-app/blob/main/LICENSE"
+                className="aetheris-btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read the full license text
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="relative overflow-hidden">
           <div

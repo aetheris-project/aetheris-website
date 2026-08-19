@@ -277,7 +277,7 @@ export default async function StorePage() {
               {
                 icon: Gift,
                 title: "Free forever",
-                description: "All store integrations are MIT-licensed and free to use."
+                description: "All store integrations are released under the Aetheris License v1.0 and free to use."
               },
               {
                 icon: Zap,
