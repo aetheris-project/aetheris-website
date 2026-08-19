@@ -2,15 +2,19 @@ import Link from "next/link";
 import {
   ArrowRight,
   Boxes,
+  Cable,
   CreditCard,
   Globe,
   LayoutGrid,
   Monitor,
+  Palette,
   ShieldCheck,
-  TerminalSquare
+  TerminalSquare,
+  Workflow
 } from "lucide-react";
 import { SiteHeader } from "@/components/website/SiteHeader";
 import { Footer } from "@/components/website/Footer";
+import { InteractiveDemo } from "@/components/website/InteractiveDemo";
 import { FAQ_ITEMS } from "@/lib/seo/jsonLd";
 
 const FEATURES = [
@@ -71,6 +75,27 @@ const STATS = [
   { value: "3", label: "Payment gateways" },
   { value: "99.99%", label: "Uptime SLA" },
   { value: "<50ms", label: "API latency" }
+];
+
+const STEPS = [
+  {
+    title: "Connect your infrastructure",
+    description:
+      "Attach Pterodactyl, Proxmox VE or VirtFusion nodes in minutes. Allocation pools, nests, eggs and per-client limits are configured from the admin control plane.",
+    icon: Cable
+  },
+  {
+    title: "Provision and bill automatically",
+    description:
+      "Clients order servers through the portal. The billing engine prorates, invoices and dunns on schedule while BullMQ workers orchestrate every deployment.",
+    icon: Workflow
+  },
+  {
+    title: "White-label and launch",
+    description:
+      "Publish your own brand: name, logos, accent colors, custom domain and email templates change at runtime with zero rebuilds. Ship your platform today.",
+    icon: Palette
+  }
 ];
 
 const PLANS = [
@@ -336,6 +361,68 @@ export default function HomePage() {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section id="how-it-works" className="relative overflow-hidden border-y border-edge bg-surface">
+          <div className="absolute -right-32 top-1/2 h-72 w-72 glow-accent opacity-50" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
+            <div className="max-w-2xl">
+              <p className="aetheris-kicker">How it works</p>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
+                From bare nodes to a live brand in three steps
+              </h2>
+              <p className="mt-4 text-pretty leading-7 text-muted">
+                No migrations, no rip-and-replace. Aetheris sits on top of the
+                infrastructure you already run and turns it into a product.
+              </p>
+            </div>
+            <div className="mt-14 grid gap-4 lg:grid-cols-3">
+              {STEPS.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <article key={step.title} className="aetheris-card aetheris-card-hover p-7">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <span className="font-mono text-xs text-faint">0{index + 1}</span>
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{step.title}</h3>
+                    <p className="mt-2.5 text-sm leading-6 text-muted">{step.description}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Live demo */}
+        <section id="demo" className="relative overflow-hidden py-24">
+          <div className="absolute -top-40 left-1/2 h-[30rem] w-[52rem] -translate-x-1/2 glow-accent" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="aetheris-kicker">Live preview</p>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
+                Explore the control plane <span className="text-gradient">right here</span>
+              </h2>
+              <p className="mt-4 text-pretty leading-7 text-muted">
+                Seven interactive panels covering the client portal, VNC console,
+                billing engine, node management, provisioning, whitelabeling and
+                the API - every one a real React component running against the
+                production driver contract.
+              </p>
+            </div>
+            <div className="mt-12">
+              <InteractiveDemo />
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/demo" className="aetheris-btn-secondary">
+                Open the full demo page
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </section>
 

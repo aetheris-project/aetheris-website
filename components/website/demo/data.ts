@@ -266,3 +266,161 @@ export const CONSOLE_STREAMED_LINES: DemoConsoleLine[] = [
   { time: "13:37:17", level: "warn", text: "bandwidth: monthly transfer at 68% of allocation" },
   { time: "13:37:21", level: "info", text: "console: heartbeat 15s interval acknowledged" }
 ];
+
+/* ------------------------------------------------------------------ */
+/* Client portal                                                       */
+/* ------------------------------------------------------------------ */
+
+export interface DemoClientServer {
+  id: string;
+  name: string;
+  egg: string;
+  plan: string;
+  state: PowerState;
+  ipv4: string;
+  region: string;
+  vcpu: number;
+  memoryGb: number;
+  diskGb: number;
+  transferGb: number;
+  cpu: number;
+  ram: number;
+  disk: number;
+  transferUsed: number;
+  nextDue: string;
+  monthlyCost: number;
+}
+
+export interface DemoBackup {
+  id: string;
+  label: string;
+  size: string;
+  createdAt: string;
+  status: "completed" | "running";
+}
+
+export const DEMO_CLIENT_SERVERS: DemoClientServer[] = [
+  {
+    id: "srv-8f2a",
+    name: "Production-01",
+    egg: "Node.js",
+    plan: "Growth",
+    state: "running",
+    ipv4: "10.40.0.11",
+    region: "EU West - Frankfurt",
+    vcpu: 2,
+    memoryGb: 4,
+    diskGb: 40,
+    transferGb: 2000,
+    cpu: 34,
+    ram: 52,
+    disk: 61,
+    transferUsed: 68,
+    nextDue: "2026-09-01",
+    monthlyCost: 19
+  },
+  {
+    id: "srv-19c3",
+    name: "Web-02",
+    egg: "Node.js",
+    plan: "Starter",
+    state: "running",
+    ipv4: "10.40.0.12",
+    region: "EU West - Frankfurt",
+    vcpu: 1,
+    memoryGb: 2,
+    diskGb: 20,
+    transferGb: 1000,
+    cpu: 18,
+    ram: 41,
+    disk: 38,
+    transferUsed: 31,
+    nextDue: "2026-09-01",
+    monthlyCost: 9
+  },
+  {
+    id: "srv-44b1",
+    name: "Staging-API",
+    egg: "Python",
+    plan: "Growth",
+    state: "stopped",
+    ipv4: "10.40.0.13",
+    region: "US East - Ashburn",
+    vcpu: 2,
+    memoryGb: 4,
+    diskGb: 40,
+    transferGb: 2000,
+    cpu: 0,
+    ram: 0,
+    disk: 44,
+    transferUsed: 12,
+    nextDue: "2026-09-01",
+    monthlyCost: 19
+  },
+  {
+    id: "srv-a7d0",
+    name: "Cache-Redis",
+    egg: "Redis",
+    plan: "Starter",
+    state: "running",
+    ipv4: "10.40.0.14",
+    region: "AP South - Singapore",
+    vcpu: 1,
+    memoryGb: 1,
+    diskGb: 8,
+    transferGb: 500,
+    cpu: 9,
+    ram: 22,
+    disk: 17,
+    transferUsed: 8,
+    nextDue: "2026-09-01",
+    monthlyCost: 9
+  }
+];
+
+export const DEMO_BACKUPS: DemoBackup[] = [
+  { id: "bk-0191", label: "Daily snapshot", size: "1.8 GB", createdAt: "2026-08-19 02:00", status: "completed" },
+  { id: "bk-0187", label: "Pre-deploy backup", size: "1.7 GB", createdAt: "2026-08-16 14:22", status: "completed" },
+  { id: "bk-0182", label: "Weekly retention", size: "1.6 GB", createdAt: "2026-08-12 02:00", status: "completed" },
+  { id: "bk-0179", label: "Manual snapshot", size: "1.6 GB", createdAt: "2026-08-08 09:41", status: "completed" }
+];
+
+/* ------------------------------------------------------------------ */
+/* API / SDK                                                           */
+/* ------------------------------------------------------------------ */
+
+export type ApiMethod = "GET" | "POST" | "PATCH" | "DELETE";
+
+export interface DemoApiEndpoint {
+  method: ApiMethod;
+  path: string;
+  description: string;
+  auth: "API key" | "Public";
+}
+
+export const DEMO_API_ENDPOINTS: DemoApiEndpoint[] = [
+  { method: "GET", path: "/v1/servers", description: "List the authenticated client's servers", auth: "API key" },
+  { method: "POST", path: "/v1/servers", description: "Provision a server from a template and plan", auth: "API key" },
+  { method: "GET", path: "/v1/servers/{id}", description: "Fetch a single server with live telemetry", auth: "API key" },
+  { method: "POST", path: "/v1/servers/{id}/power", description: "Send a start, stop or restart signal", auth: "API key" },
+  { method: "POST", path: "/v1/servers/{id}/backups", description: "Create an on-demand backup snapshot", auth: "API key" },
+  { method: "GET", path: "/v1/billing/invoices", description: "List invoices and payment history", auth: "API key" },
+  { method: "POST", path: "/v1/billing/invoices/{id}/pay", description: "Settle an outstanding invoice", auth: "API key" },
+  { method: "GET", path: "/v1/whitelabel", description: "Resolve the platform whitelabel configuration", auth: "Public" }
+];
+
+export interface DemoApiKey {
+  prefix: string;
+  secret: string;
+  label: string;
+  createdAt: string;
+  lastUsed: string;
+}
+
+export const DEMO_API_KEY: DemoApiKey = {
+  prefix: "aet_live_8f3k",
+  secret: "9xY2mQvR4tLp6wBzNcJh3KsFdAe5TgUi",
+  label: "Production workspace",
+  createdAt: "2026-03-14",
+  lastUsed: "2 minutes ago"
+};

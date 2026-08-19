@@ -7,12 +7,18 @@
  */
 
 import {
+  DEMO_API_KEY,
+  DEMO_BACKUPS,
+  DEMO_CLIENT_SERVERS,
   DEMO_INVOICES,
   DEMO_NODES,
   DEMO_PAYMENT_METHOD,
   DEMO_PLANS,
   DEMO_SERVERS,
   DEMO_TEMPLATES,
+  type DemoApiKey,
+  type DemoBackup,
+  type DemoClientServer,
   type DemoInvoice,
   type DemoNode,
   type DemoPaymentMethod,
@@ -51,6 +57,11 @@ export interface PayInvoiceResult {
   transactionId: string;
 }
 
+export interface BackupResult {
+  backupId: string;
+  status: "completed";
+}
+
 export interface MockDriver {
   listNodes(): Promise<DemoNode[]>;
   listServers(nodeId: string): Promise<DemoServers[]>;
@@ -62,6 +73,12 @@ export interface MockDriver {
   listTemplates(): Promise<DemoTemplate[]>;
   listPlans(): Promise<DemoPlan[]>;
   provisionServer(request: ProvisionRequest): Promise<ProvisionResult>;
+  listClientServers(): Promise<DemoClientServer[]>;
+  listBackups(serverId: string): Promise<DemoBackup[]>;
+  createBackup(serverId: string): Promise<BackupResult>;
+  restoreBackup(backupId: string): Promise<{ backupId: string; restored: boolean }>;
+  getApiKey(): Promise<DemoApiKey>;
+  rotateApiKey(): Promise<DemoApiKey>;
 }
 
 export const mockDriver: MockDriver = {
@@ -130,5 +147,37 @@ export const mockDriver: MockDriver = {
       template: template.name,
       node: node.name
     };
+  },
+
+  async listClientServers() {
+    await delay(LATENCY_MS);
+    return DEMO_CLIENT_SERVERS;
+  },
+
+  async listBackups(serverId: string) {
+    await delay(200);
+    // Staging server carries one extra backup in the demo dataset.
+    return serverId === "srv-44b1" ? [...DEMO_BACKUPS, { id: "bk-0175", label: "Pre-migration", size: "1.9 GB", createdAt: "2026-08-02 18:12", status: "completed" as const }] : DEMO_BACKUPS;
+  },
+
+  async createBackup(serverId: string) {
+    await delay(900);
+    return { backupId: `bk-${String(Date.now()).slice(-4)}`, status: "completed" as const };
+  },
+
+  async restoreBackup(backupId: string) {
+    await delay(900);
+    return { backupId, restored: true };
+  },
+
+  async getApiKey() {
+    await delay(120);
+    return DEMO_API_KEY;
+  },
+
+  async rotateApiKey() {
+    await delay(700);
+    const secret = "9xY2mQvR4tLp6wBzNcJh3KsFdAe5TgUi".split("").reverse().join("");
+    return { ...DEMO_API_KEY, secret };
   }
 };
