@@ -19,7 +19,7 @@ export function organizationJsonLd(config: WhitelabelConfig): JsonLdNode {
     "@type": "Organization",
     name: config.brand.name,
     url: SITE_URL,
-    logo: `${SITE_URL}${config.brand.logoUrl}`,
+    logo: `${SITE_URL}/logo.svg`,
     description: config.brand.tagline,
     email: config.contact.email,
     sameAs: [config.contact.twitterUrl, config.contact.supportUrl]
@@ -56,7 +56,7 @@ export function softwareApplicationJsonLd(config: WhitelabelConfig): JsonLdNode 
     applicationSubCategory: "Billing and Infrastructure Management",
     description: config.brand.tagline,
     url: SITE_URL,
-    image: `${SITE_URL}${config.seo.ogImage}`,
+    image: `${SITE_URL}/logo.svg`,
     offers: {
       "@type": "Offer",
       price: "0",

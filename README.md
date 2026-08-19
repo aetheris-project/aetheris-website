@@ -1,4 +1,18 @@
-# Aetheris Website
+<p align="center">
+  <img src="../assets/logo.svg" alt="Aetheris Enterprise Platform" width="400">
+</p>
+
+<h1 align="center">Aetheris Website</h1>
+
+<p align="center">
+  <strong>Marketing site, interactive product demo, dynamic SEO</strong>
+</p>
+
+<p align="center">
+  <a href="https://aetheris-website-six.vercel.app">Production</a>
+</p>
+
+---
 
 Marketing site, interactive product demo, dynamic SEO and landing page for the
 Aetheris billing and virtualization platform.

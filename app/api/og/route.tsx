@@ -42,22 +42,42 @@ export async function GET(request: NextRequest) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 10,
-              backgroundColor: accent.primary,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 24,
-              fontWeight: 800,
-              color: "#09090B"
-            }}
+          <svg
+            width="44"
+            height="44"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            A
-          </div>
+            <defs>
+              <linearGradient id="ogLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: "#34D399" }} />
+                <stop offset="50%" style={{ stopColor: accent.primary }} />
+                <stop offset="100%" style={{ stopColor: accent.strong }} />
+              </linearGradient>
+            </defs>
+            <path
+              d="M32 2 L58 17 L58 47 L32 62 L6 47 L6 17 Z"
+              fill="none"
+              stroke="url(#ogLogoGrad)"
+              strokeWidth="3"
+            />
+            <path
+              d="M32 8 L52 20 L52 44 L32 56 L12 44 L12 20 Z"
+              fill="url(#ogLogoGrad)"
+              opacity="0.15"
+            />
+            <path
+              d="M32 16 L48 48 L43 48 L40 42 L24 42 L21 48 L16 48 Z M27 38 L37 38 L32 24 Z"
+              fill="url(#ogLogoGrad)"
+            />
+            <circle cx="32" cy="8" r="3" fill={accent.primary} />
+            <circle cx="10" cy="22" r="2.5" fill={accent.primary} opacity="0.7" />
+            <circle cx="54" cy="22" r="2.5" fill={accent.primary} opacity="0.7" />
+            <circle cx="10" cy="42" r="2.5" fill={accent.primary} opacity="0.7" />
+            <circle cx="54" cy="42" r="2.5" fill={accent.primary} opacity="0.7" />
+            <circle cx="32" cy="56" r="3" fill={accent.primary} />
+          </svg>
           <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.01em" }}>
             {DEFAULT_WHITELABEL.brand.name}
           </div>

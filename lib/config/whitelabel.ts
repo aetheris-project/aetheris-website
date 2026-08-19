@@ -74,8 +74,8 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
   brand: {
     name: "Aetheris",
     tagline: "Billing and virtualization control plane for the enterprise",
-    logoUrl: "/brand/aetheris-mark.svg",
-    logoDarkUrl: "/brand/aetheris-mark.svg",
+    logoUrl: "/logo.svg",
+    logoDarkUrl: "/logo.svg",
     domain: "aetheris.enterprise"
   },
   theme: {

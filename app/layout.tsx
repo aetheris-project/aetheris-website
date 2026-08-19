@@ -31,6 +31,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/"
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+    other: {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/icon.svg"
+    }
+  },
   openGraph: {
     type: "website",
     siteName: DEFAULT_WHITELABEL.brand.name,
