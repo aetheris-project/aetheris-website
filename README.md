@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Aetheris Enterprise Platform" width="400">
+  <img src="assets/logo.svg" alt="Aetheris Enterprise Platform" width="400">
 </p>
 
 <h1 align="center">Aetheris Website</h1>

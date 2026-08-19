@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.png", type: "image/png", sizes: "512x512" }],
-    shortcut: "/favicon.ico",
-    apple: "/app-icon.png",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
     other: {
       rel: "icon",
-      type: "image/png",
-      url: "/icon.png"
+      type: "image/svg+xml",
+      url: "/icon.svg"
     }
   },
   openGraph: {

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useWhitelabel } from "@/lib/theme/WhitelabelProvider";
 import { ThemeToggle } from "@/components/website/ThemeToggle";
@@ -15,15 +14,8 @@ export function SiteHeader() {
         aria-label="Primary"
       >
         <Link href="/" className="group flex items-center gap-2.5" aria-label={`${config.brand.name} home`}>
-          <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-[10px] bg-raised ring-1 ring-edge transition-transform duration-200 group-hover:scale-105">
-            <Image
-              src="/icon.png"
-              alt=""
-              width={32}
-              height={32}
-              className="h-full w-full object-cover"
-              priority
-            />
+          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base shadow-[0_0_20px_-4px_color-mix(in_srgb,var(--aetheris-accent)_70%,transparent)] transition-transform duration-200 group-hover:scale-105">
+            A
           </span>
           <span className="text-[15px] font-semibold tracking-tight">{config.brand.name}</span>
         </Link>
