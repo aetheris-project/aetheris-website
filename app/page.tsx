@@ -3,9 +3,11 @@ import {
   ArrowRight,
   Boxes,
   Cable,
+  Clock,
   CreditCard,
   Globe,
   LayoutGrid,
+  Mail,
   Monitor,
   Palette,
   ShieldCheck,
@@ -15,7 +17,10 @@ import {
 import { SiteHeader } from "@/components/website/SiteHeader";
 import { Footer } from "@/components/website/Footer";
 import { InteractiveDemo } from "@/components/website/InteractiveDemo";
+import { ContactForm } from "@/components/website/ContactForm";
 import { FAQ_ITEMS } from "@/lib/seo/jsonLd";
+
+const CONTACT_EMAIL = "hello@another-horizon.eu";
 
 const FEATURES = [
   {
@@ -98,34 +103,24 @@ const STEPS = [
   }
 ];
 
-const PLANS = [
+const CONTACT_POINTS = [
   {
-    name: "Starter",
-    price: "$0",
-    period: "per month",
-    description: "For small providers consolidating billing and Pterodactyl.",
-    features: ["Unified billing engine", "Pterodactyl driver", "1 admin seat", "Client portal", "Community support"]
+    title: "Direct email",
+    description: "Prefer email? Write to us directly and we will get back within one business day.",
+    value: CONTACT_EMAIL,
+    icon: Mail
   },
   {
-    name: "Enterprise",
-    price: "$499",
-    period: "per month",
-    description: "For managed hosts running multiple hypervisors at scale.",
-    features: [
-      "All hypervisor drivers",
-      "Unlimited seats",
-      "Dynamic whitelabeling",
-      "VNC console",
-      "Priority support and SLA"
-    ],
-    highlighted: true
+    title: "Fast response",
+    description: "Every inquiry is read by a human on the engineering team - no sales bots, no phone trees.",
+    value: "Within 24 hours",
+    icon: Clock
   },
   {
-    name: "Self-hosted",
-    price: "Free",
-    period: "MIT-licensed core",
-    description: "Run the entire platform on your own infrastructure.",
-    features: ["Non-interactive installer", "Systemd workers", "Nginx reverse proxy", "Full OpenAPI spec", "Community support"]
+    title: "Tailored to your stack",
+    description: "Tell us about your hypervisors, billing needs and launch timeline and we will map the deployment with you.",
+    value: "Pterodactyl, Proxmox VE, VirtFusion",
+    icon: Boxes
   }
 ];
 
@@ -455,56 +450,47 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section id="pricing" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
-          <div className="max-w-2xl">
-            <p className="aetheris-kicker">Pricing</p>
-            <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">Pricing</h2>
-          </div>
+        {/* Contact */}
+        <section id="contact" className="relative overflow-hidden border-y border-edge bg-surface">
+          <div className="absolute -left-32 top-1/3 h-80 w-80 glow-accent opacity-50" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
+            <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <p className="aetheris-kicker">Contact</p>
+                <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
+                  Let&apos;s build your platform
+                </h2>
+                <p className="mt-4 max-w-xl text-pretty leading-7 text-muted">
+                  No pricing pages, no commitment - just a conversation about
+                  your infrastructure. Tell us where you are today and where
+                  you want to be, and we will show you how Aetheris fits.
+                </p>
 
-          <div className="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
-            {PLANS.map((plan) => (
-              <div
-                key={plan.name}
-                className={
-                  plan.highlighted
-                    ? "aetheris-frame shadow-[0_20px_60px_-20px_color-mix(in_srgb,var(--aetheris-accent)_40%,transparent)]"
-                    : ""
-                }
-              >
-                <article
-                  className={`relative flex h-full flex-col rounded-2xl border p-7 ${
-                    plan.highlighted
-                      ? "border-transparent bg-gradient-to-b from-surface to-raised"
-                      : "aetheris-card"
-                  }`}
-                >
-                  {plan.highlighted && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#09090B]">
-                      Most popular
-                    </span>
-                  )}
-                  <h3 className="text-base font-semibold tracking-tight">{plan.name}</h3>
-                  <div className="mt-4 flex items-baseline gap-2">
-                    <span className="text-4xl font-extrabold tracking-tighter">{plan.price}</span>
-                    <span className="text-sm text-faint">{plan.period}</span>
-                  </div>
-                  <p className="mt-3 text-sm leading-6 text-muted">{plan.description}</p>
-                  <ul className="mt-7 flex-1 space-y-3">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm">
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent-soft text-accent">
-                          <svg viewBox="0 0 12 12" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <path d="M2.5 6.5l2.5 2.5 4.5-5.5" />
-                          </svg>
+                <div className="mt-10 space-y-4">
+                  {CONTACT_POINTS.map((point) => {
+                    const Icon = point.icon;
+                    return (
+                      <div key={point.title} className="aetheris-card aetheris-card-hover flex gap-4 p-5">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+                        <div>
+                          <div className="flex flex-wrap items-baseline gap-x-2">
+                            <h3 className="text-sm font-semibold tracking-tight">{point.title}</h3>
+                            <span className="text-xs text-faint">{point.value}</span>
+                          </div>
+                          <p className="mt-1.5 text-sm leading-6 text-muted">{point.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            ))}
+
+              <div className="lg:pt-2">
+                <ContactForm inbox={CONTACT_EMAIL} />
+              </div>
+            </div>
           </div>
         </section>
 

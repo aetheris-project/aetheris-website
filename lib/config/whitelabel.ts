@@ -74,8 +74,8 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
   brand: {
     name: "Aetheris",
     tagline: "Billing and virtualization control plane for the enterprise",
-    logoUrl: "/logo.svg",
-    logoDarkUrl: "/logo.svg",
+    logoUrl: "/icon.svg",
+    logoDarkUrl: "/icon.svg",
     domain: "aetheris.enterprise"
   },
   theme: {
@@ -87,12 +87,12 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
     { label: "Product", href: "#product", cta: false },
     { label: "Live Demo", href: "/demo", cta: false },
     { label: "Integrations", href: "#integrations", cta: false },
-    { label: "Pricing", href: "#pricing", cta: false },
+    { label: "Contact", href: "#contact", cta: false },
     { label: "Documentation", href: "https://docs.aetheris.enterprise", cta: false },
     { label: "Open Console", href: "https://app.aetheris.enterprise", cta: true }
   ],
   contact: {
-    email: "ops@aetheris.enterprise",
+    email: "hello@another-horizon.eu",
     supportUrl: "https://support.aetheris.enterprise",
     twitterUrl: "https://x.com/aetheris"
   },
