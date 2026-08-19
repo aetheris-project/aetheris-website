@@ -8,16 +8,10 @@
   <strong>Marketing site, interactive product demo, dynamic SEO</strong>
 </p>
 
-<p align="center">
-  <a href="https://aetheris-website-six.vercel.app">Production</a>
-</p>
-
 ---
 
 Marketing site, interactive product demo, dynamic SEO and landing page for the
 Aetheris billing and virtualization platform.
-
-Production: https://aetheris-website-six.vercel.app
 
 ## Overview
 
@@ -40,7 +34,6 @@ public marketing surface of that platform:
 - Next.js 14 (App Router), React 18, TypeScript (strict mode)
 - Tailwind CSS with a CSS-variable accent system
 - `@vercel/og` for dynamic OpenGraph images
-- Deployed on Vercel
 
 ## Repository layout
 
@@ -87,16 +80,6 @@ homepage at `/#demo`.
 Branding, navigation and accent defaults live in
 `lib/config/whitelabel.json`. When `NEXT_PUBLIC_WHITELABEL_URL` is set, the
 client merges the remote configuration over the static default at runtime.
-
-## Production
-
-```bash
-npm run build
-npm run start
-```
-
-The repository is linked to the `aetheris-website` project on Vercel; pushes to
-`main` trigger production deployments automatically.
 
 ## Related repositories
 
