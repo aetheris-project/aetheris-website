@@ -34,7 +34,7 @@ const ACCENT_SWATCHES: Array<{ id: AccentName; color: string }> = [
  * mirrors the production driver contracts from aetheris-app. The content
  * area has a fixed height so tab switches never shift layout (CLS = 0).
  */
-export function InteractiveDemo() {
+export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
   const { accent, setAccent, config } = useWhitelabel();
   const [activeTab, setActiveTab] = useState<DemoTabId>("vnc");
   const [expanded, setExpanded] = useState(false);
@@ -43,7 +43,7 @@ export function InteractiveDemo() {
     <div
       className={cn(
         "overflow-hidden rounded-2xl border border-edge bg-surface shadow-2xl shadow-black/60 transition-[height] duration-300",
-        expanded ? "h-[680px]" : "h-[560px]"
+        expanded ? "h-[720px]" : tall ? "h-[720px]" : "h-[560px]"
       )}
       style={{ borderRadius: `calc(var(--aetheris-radius, 10px) * 1.2)` }}
       aria-label="Aetheris interactive product demo"

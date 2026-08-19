@@ -23,7 +23,7 @@ export function Footer() {
         <div className="space-y-3">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">Platform</h2>
           <ul className="space-y-2 text-sm">
-            <li><Link href="#demo" className="text-muted transition-colors hover:text-ink">Live demo</Link></li>
+            <li><Link href="/demo" className="text-muted transition-colors hover:text-ink">Live demo</Link></li>
             <li><Link href="#product" className="text-muted transition-colors hover:text-ink">Features</Link></li>
             <li><Link href="#integrations" className="text-muted transition-colors hover:text-ink">Integrations</Link></li>
             <li><Link href="#pricing" className="text-muted transition-colors hover:text-ink">Pricing</Link></li>

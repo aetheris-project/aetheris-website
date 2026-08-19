@@ -11,15 +11,6 @@ const nextConfig = {
         hostname: "**"
       }
     ]
-  },
-  async redirects() {
-    return [
-      {
-        source: "/demo",
-        destination: "/#demo",
-        permanent: true
-      }
-    ];
   }
 };
 

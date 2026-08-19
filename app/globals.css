@@ -113,6 +113,15 @@ body {
   }
 }
 
+/* Hero background grid, masked to a soft radial fade */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(39 39 42 / 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(39 39 42 / 0.4) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 35%, transparent 100%);
+}
+
 /* VNC screen scanline overlay */
 .scanline::after {
   content: "";
