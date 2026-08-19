@@ -1,0 +1,56 @@
+{
+  "brand": {
+    "name": "Aetheris",
+    "tagline": "Billing and virtualization control plane for the enterprise",
+    "logoUrl": "/brand/aetheris-mark.svg",
+    "logoDarkUrl": "/brand/aetheris-mark.svg",
+    "domain": "aetheris.enterprise"
+  },
+  "theme": {
+    "accent": "emerald",
+    "radius": 10,
+    "fontFamily": ""
+  },
+  "navigation": [
+    { "label": "Product", "href": "#product", "cta": false },
+    { "label": "Demo", "href": "#demo", "cta": false },
+    { "label": "Integrations", "href": "#integrations", "cta": false },
+    { "label": "Pricing", "href": "#pricing", "cta": false },
+    { "label": "Documentation", "href": "https://docs.aetheris.enterprise", "cta": false },
+    { "label": "Open Console", "href": "https://app.aetheris.enterprise", "cta": true }
+  ],
+  "contact": {
+    "email": "ops@aetheris.enterprise",
+    "supportUrl": "https://support.aetheris.enterprise",
+    "twitterUrl": "https://x.com/aetheris"
+  },
+  "seo": {
+    "defaultTitle": "Aetheris - Billing and Virtualization Control Plane",
+    "defaultDescription": "Aetheris unifies WHMCS, FOSSBilling, Pterodactyl, Proxmox VE and VirtFusion into a single enterprise billing and virtualization management platform.",
+    "ogImage": "/api/og",
+    "keywords": [
+      "billing platform",
+      "virtualization management",
+      "pterodactyl panel",
+      "proxmox ve",
+      "whmcs alternative"
+    ]
+  },
+  "modules": {
+    "billing": true,
+    "vncConsole": true,
+    "pterodactyl": true,
+    "proxmox": true,
+    "virtfusion": true,
+    "registrars": true
+  },
+  "integrations": {
+    "stripe": true,
+    "paypal": true,
+    "mollie": true,
+    "namecheap": true,
+    "cloudflare": true,
+    "cpanel": true,
+    "directadmin": true
+  }
+}

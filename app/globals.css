@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Aetheris Design System
+ * Dark-mode enterprise palette with a dynamic custom accent system.
+ * Accents are injected via CSS custom properties by the WhitelabelProvider,
+ * so rebranding never requires a rebuild.
+ */
+
+/*
+ * Palette tokens are RGB triplets so Tailwind can apply opacity modifiers
+ * through the <alpha-value> placeholder (see tailwind.config.ts). The accent
+ * variables are swapped at runtime by the WhitelabelProvider via data-accent.
+ */
+:root {
+  --aetheris-bg: 9 9 11;
+  --aetheris-surface: 24 24 27;
+  --aetheris-raised: 31 31 35;
+  --aetheris-border: 39 39 42;
+  --aetheris-fg: 250 250 250;
+  --aetheris-muted: 161 161 170;
+  --aetheris-success: 16 185 129;
+  --aetheris-danger: 239 68 68;
+  --aetheris-warning: 245 158 11;
+
+  /* Default accent: Emerald (#10B981) */
+  --aetheris-accent: 16 185 129;
+  --aetheris-accent-strong: 5 150 105;
+  --aetheris-accent-soft: rgba(16, 185, 129, 0.12);
+
+  color-scheme: dark;
+}
+
+/* Data-accent variants: Indigo and Amber (Emerald is the :root default). */
+[data-accent="indigo"] {
+  --aetheris-accent: 99 102 241;
+  --aetheris-accent-strong: 79 70 229;
+  --aetheris-accent-soft: rgba(99, 102, 241, 0.12);
+}
+
+[data-accent="amber"] {
+  --aetheris-accent: 245 158 11;
+  --aetheris-accent-strong: 217 119 6;
+  --aetheris-accent-soft: rgba(245, 158, 11, 0.12);
+}
+
+* {
+  border-color: var(--aetheris-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--aetheris-bg));
+  color: rgb(var(--aetheris-fg));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--aetheris-accent-soft);
+  color: rgb(var(--aetheris-fg));
+}
+
+/* Thin, theme-aware scrollbars (WebKit) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--aetheris-border)) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--aetheris-border));
+  border-radius: 4px;
+}
+
+@layer components {
+  .aetheris-card {
+    @apply rounded-xl border border-edge bg-surface;
+  }
+
+  .aetheris-card-raised {
+    @apply rounded-xl border border-edge bg-raised;
+  }
+
+  .aetheris-btn {
+    @apply inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg px-3.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .aetheris-btn-primary {
+    @apply inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg bg-accent px-3.5 text-sm font-medium text-[#09090b] transition-colors hover:bg-accent-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .aetheris-btn-secondary {
+    @apply inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg border border-edge bg-surface px-3.5 text-sm font-medium text-ink transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .aetheris-btn-ghost {
+    @apply inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg px-3.5 text-sm font-medium text-muted transition-colors hover:bg-raised hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .aetheris-input {
+    @apply h-9 w-full rounded-lg border border-edge bg-base px-3 text-sm text-ink placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent;
+  }
+}
+
+/* VNC screen scanline overlay */
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.025) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scanline 6s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
