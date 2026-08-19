@@ -3,50 +3,76 @@
 import Link from "next/link";
 import { useWhitelabel } from "@/lib/theme/WhitelabelProvider";
 
+const COLUMNS = [
+  {
+    title: "Platform",
+    links: [
+      { label: "Live demo", href: "/demo" },
+      { label: "Product", href: "#product" },
+      { label: "Integrations", href: "#integrations" },
+      { label: "Pricing", href: "#pricing" }
+    ]
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Documentation", href: "https://docs.aetheris.enterprise" },
+      { label: "Installation guide", href: "https://docs.aetheris.enterprise/wiki/installation" },
+      { label: "REST API", href: "https://docs.aetheris.enterprise/api/reference" },
+      { label: "Status", href: "https://status.aetheris.enterprise" }
+    ]
+  }
+];
+
 export function Footer() {
   const { config } = useWhitelabel();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-edge bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4">
+    <footer className="border-t border-white/[0.06] bg-surface">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="space-y-4 md:col-span-2">
-          <div className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-extrabold text-base">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base">
               A
             </span>
-            <span className="text-base font-semibold tracking-tight">{config.brand.name}</span>
+            <span className="text-[15px] font-semibold tracking-tight">{config.brand.name}</span>
           </div>
           <p className="max-w-md text-sm leading-6 text-muted">{config.brand.tagline}</p>
+          <div className="inline-flex h-7 items-center gap-2 rounded-full border border-edge bg-base px-3 text-xs text-muted">
+            <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-success" />
+            All systems operational
+          </div>
         </div>
 
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">Platform</h2>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/demo" className="text-muted transition-colors hover:text-ink">Live demo</Link></li>
-            <li><Link href="#product" className="text-muted transition-colors hover:text-ink">Features</Link></li>
-            <li><Link href="#integrations" className="text-muted transition-colors hover:text-ink">Integrations</Link></li>
-            <li><Link href="#pricing" className="text-muted transition-colors hover:text-ink">Pricing</Link></li>
-          </ul>
-        </div>
-
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">Resources</h2>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="https://docs.aetheris.enterprise" className="text-muted transition-colors hover:text-ink">Documentation</Link></li>
-            <li><Link href="https://status.aetheris.enterprise" className="text-muted transition-colors hover:text-ink">Status</Link></li>
-            <li><Link href={`mailto:${config.contact.email}`} className="text-muted transition-colors hover:text-ink">Contact</Link></li>
-          </ul>
-        </div>
+        {COLUMNS.map((column) => (
+          <div key={column.title} className="space-y-3">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-faint">
+              {column.title}
+            </h2>
+            <ul className="space-y-2.5 text-sm">
+              {column.links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-muted transition-colors duration-200 hover:text-ink"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
 
-      <div className="border-t border-edge">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-white/[0.06]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
           <p>
             Copyright {year} {config.brand.name}. All rights reserved.
           </p>
-          <p>
-            Billing and virtualization control plane for the enterprise.
+          <p className="font-mono text-[11px]">
+            v1.0.0 - billing and virtualization control plane
           </p>
         </div>
       </div>

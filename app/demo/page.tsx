@@ -20,17 +20,19 @@ export default function DemoPage() {
         <section className="mx-auto max-w-7xl px-6 py-14">
           <Link
             href="/"
-            className="inline-flex h-8 items-center gap-2 rounded-lg border border-edge bg-surface px-3 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-ink"
+            className="inline-flex h-8 items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-ink"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Back to home
           </Link>
 
-          <div className="mx-auto mt-8 max-w-3xl text-center">
-            <h1 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-              Aetheris control plane, live
+          <div className="relative mx-auto mt-10 max-w-3xl text-center">
+            <div className="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 glow-accent" aria-hidden="true" />
+            <p className="relative aetheris-kicker">Interactive preview</p>
+            <h1 className="relative mt-3 text-balance text-4xl font-extrabold tracking-tighter sm:text-5xl">
+              Aetheris control plane, <span className="text-gradient">live</span>
             </h1>
-            <p className="mt-4 text-pretty text-base leading-7 text-muted">
+            <p className="relative mt-5 text-pretty text-base leading-7 text-muted">
               Switch between the client VNC console, the admin node manager and
               the billing engine. Every panel is a real React component running
               against a mock data driver that mirrors the production API

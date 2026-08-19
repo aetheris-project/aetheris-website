@@ -71,8 +71,8 @@ export function NodeManagerPanel() {
   return (
     <div className="grid h-full grid-cols-[240px_1fr] overflow-hidden">
       {/* Node list */}
-      <aside className="overflow-y-auto border-r border-edge">
-        <div className="border-b border-edge px-4 py-3">
+      <aside className="overflow-y-auto border-r border-white/[0.06]">
+        <div className="border-b border-white/[0.06] px-4 py-3">
           <h3 className="text-xs font-semibold uppercase tracking-widest text-muted">Nodes</h3>
         </div>
         <ul className="p-2">
@@ -82,10 +82,10 @@ export function NodeManagerPanel() {
                 type="button"
                 onClick={() => selectNode(node.id)}
                 className={cn(
-                  "w-full rounded-lg border border-transparent px-3 py-2.5 text-left transition-colors",
+                  "w-full rounded-xl border border-transparent px-3 py-2.5 text-left transition-colors duration-150",
                   node.id === selectedId
                     ? "border-accent/40 bg-accent-soft"
-                    : "hover:bg-raised"
+                    : "hover:bg-white/[0.04]"
                 )}
                 aria-current={node.id === selectedId ? "true" : undefined}
               >
@@ -112,7 +112,7 @@ export function NodeManagerPanel() {
 
       {/* Node detail */}
       <section className="overflow-y-auto">
-        <div className="border-b border-edge px-4 py-3">
+        <div className="border-b border-white/[0.06] px-4 py-3">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div>
@@ -138,7 +138,7 @@ export function NodeManagerPanel() {
         </div>
 
         {/* Gauges */}
-        <div className="grid grid-cols-3 gap-4 border-b border-edge px-4 py-4">
+        <div className="grid grid-cols-3 gap-4 border-b border-white/[0.06] px-4 py-4">
           {loadingDetail || telemetry === null ? (
             <>
               <div className="space-y-2"><Skeleton className="h-3 w-16" /><Skeleton className="h-1.5 w-full" /></div>
@@ -157,9 +157,9 @@ export function NodeManagerPanel() {
         {/* Servers */}
         <div className="px-4 py-4">
           <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted">Running workloads</h4>
-          <div className="overflow-hidden rounded-lg border border-edge">
+          <div className="overflow-hidden rounded-xl border border-white/[0.08]">
             <table className="w-full text-left text-sm">
-              <thead className="bg-raised text-xs text-muted">
+              <thead className="bg-white/[0.03] text-xs text-muted">
                 <tr>
                   <th scope="col" className="px-3 py-2 font-medium">Server</th>
                   <th scope="col" className="px-3 py-2 font-medium">Egg</th>
@@ -168,7 +168,7 @@ export function NodeManagerPanel() {
                   <th scope="col" className="px-3 py-2 text-right font-medium">Power</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-edge bg-surface">
+              <tbody className="divide-y divide-white/[0.06] bg-transparent">
                 {servers.map((server) => (
                   <tr key={server.id}>
                     <td className="px-3 py-2.5 font-mono text-xs">{server.name}</td>

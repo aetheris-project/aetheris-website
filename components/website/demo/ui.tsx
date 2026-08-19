@@ -8,7 +8,7 @@ const TONE_DOT: Record<Tone, string> = {
   success: "bg-success",
   warning: "bg-warning",
   danger: "bg-danger",
-  neutral: "bg-muted",
+  neutral: "bg-faint",
   accent: "bg-accent"
 };
 
@@ -24,27 +24,19 @@ export function StatusPill({ tone, children }: { tone: Tone; children: ReactNode
   return (
     <span
       className={cn(
-        "inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-edge bg-base px-2.5 text-xs font-medium",
+        "inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 text-xs font-medium backdrop-blur-sm",
         TONE_TEXT[tone]
       )}
     >
-      <span className={cn("h-1.5 w-1.5 rounded-full", TONE_DOT[tone], tone === "success" && "animate-pulse-dot")} />
+      <span
+        className={cn("h-1.5 w-1.5 rounded-full", TONE_DOT[tone], tone === "success" && "animate-pulse-dot")}
+      />
       {children}
     </span>
   );
 }
 
-export function Gauge({
-  label,
-  value,
-  display,
-  tone
-}: {
-  label: string;
-  value: number;
-  display: string;
-  tone?: Tone;
-}) {
+export function Gauge({ label, value, display }: { label: string; value: number; display: string }) {
   const barTone = value >= 85 ? "bg-danger" : value >= 70 ? "bg-warning" : "bg-accent";
   return (
     <div className="min-w-0">
@@ -52,22 +44,38 @@ export function Gauge({
         <span className="text-xs font-medium text-muted">{label}</span>
         <span className="font-mono text-xs text-ink">{display}</span>
       </div>
-      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-raised" role="meter" aria-valuenow={Math.round(value)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
+      <div
+        className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]"
+        role="meter"
+        aria-valuenow={Math.round(value)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={label}
+      >
         <div
           className={cn("h-full rounded-full transition-[width] duration-500 ease-out", barTone)}
           style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
         />
       </div>
-      <span className="sr-only">{tone}</span>
     </div>
   );
 }
 
 export function MiniBar({ value }: { value: number }) {
   return (
-    <div className="h-1 w-16 overflow-hidden rounded-full bg-raised" role="meter" aria-valuenow={Math.round(value)} aria-valuemin={0} aria-valuemax={100} aria-label="utilization">
+    <div
+      className="h-1 w-16 overflow-hidden rounded-full bg-white/[0.06]"
+      role="meter"
+      aria-valuenow={Math.round(value)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="utilization"
+    >
       <div
-        className={cn("h-full rounded-full transition-[width] duration-500 ease-out", value >= 85 ? "bg-danger" : value >= 70 ? "bg-warning" : "bg-accent")}
+        className={cn(
+          "h-full rounded-full transition-[width] duration-500 ease-out",
+          value >= 85 ? "bg-danger" : value >= 70 ? "bg-warning" : "bg-accent"
+        )}
         style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
       />
     </div>
@@ -75,22 +83,16 @@ export function MiniBar({ value }: { value: number }) {
 }
 
 export function Skeleton({ className }: { className?: string }) {
-  return <div className={cn("animate-pulse rounded-lg bg-raised", className)} />;
+  return <div className={cn("skeleton rounded-lg", className)} />;
 }
 
-export function Toast({
-  message,
-  tone = "accent"
-}: {
-  message: string;
-  tone?: Tone;
-}) {
+export function Toast({ message, tone = "accent" }: { message: string; tone?: Tone }) {
   return (
     <div
       role="status"
       className={cn(
-        "flex h-10 shrink-0 items-center gap-2 rounded-lg border border-edge bg-raised px-3.5 text-xs font-medium text-ink",
-        "animate-fade-in"
+        "flex h-10 shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-[#1A1A1F] px-3.5 text-xs font-medium text-ink shadow-lg shadow-black/40",
+        "animate-fade-up"
       )}
     >
       <span className={cn("h-1.5 w-1.5 rounded-full", TONE_DOT[tone])} />
@@ -123,7 +125,7 @@ export function useToast(): ToastHandle {
   return {
     show,
     node: (
-      <div className="mt-3 flex h-10 items-center" aria-live="polite">
+      <div className="mt-3 flex h-10 items-center px-4" aria-live="polite">
         {message ? <Toast message={message} tone={tone} /> : null}
       </div>
     )

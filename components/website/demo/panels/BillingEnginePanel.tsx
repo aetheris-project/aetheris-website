@@ -95,14 +95,14 @@ export function BillingEnginePanel() {
         </div>
 
         {/* Invoice table */}
-        <div className="mt-4 overflow-hidden rounded-lg border border-edge">
-          <div className="flex items-center justify-between border-b border-edge bg-raised px-4 py-2.5">
+        <div className="mt-4 overflow-hidden rounded-xl border border-white/[0.08]">
+          <div className="flex items-center justify-between border-b border-white/[0.06] bg-white/[0.03] px-4 py-2.5">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted">Invoices</h3>
             <span className="font-mono text-[11px] text-muted">billing.aetheris.enterprise</span>
           </div>
           <table className="w-full text-left text-sm">
             <thead className="text-xs text-muted">
-              <tr className="border-b border-edge bg-surface">
+              <tr className="border-b border-white/[0.06] bg-transparent">
                 <th scope="col" className="px-4 py-2 font-medium">Invoice</th>
                 <th scope="col" className="px-4 py-2 font-medium">Client</th>
                 <th scope="col" className="hidden px-4 py-2 font-medium md:table-cell">Description</th>
@@ -111,7 +111,7 @@ export function BillingEnginePanel() {
                 <th scope="col" className="px-4 py-2 text-right font-medium">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-edge bg-surface">
+            <tbody className="divide-y divide-white/[0.06] bg-transparent">
               {loading
                 ? Array.from({ length: 4 }).map((_, index) => (
                     <tr key={index}>
@@ -163,7 +163,7 @@ export function BillingEnginePanel() {
         </div>
 
         {/* Payment method */}
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-edge bg-surface px-4 py-3">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-3">
           <div className="flex items-center gap-3">
             <span className="flex h-9 w-12 items-center justify-center rounded-md border border-edge bg-raised text-[10px] font-bold tracking-tight text-muted">
               VISA

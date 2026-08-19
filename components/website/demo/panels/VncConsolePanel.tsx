@@ -86,7 +86,7 @@ export function VncConsolePanel({
   return (
     <div className="flex h-full flex-col">
       {/* Header row */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-edge px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.06] px-4 py-3">
         <div className="flex min-w-0 items-center gap-3">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
@@ -134,7 +134,7 @@ export function VncConsolePanel({
 
       {/* VNC screen: fixed heights keep the panel inside the frame at every breakpoint */}
       <div className="px-4 pt-4">
-        <div className={cn("relative h-56 w-full overflow-hidden rounded-lg border border-edge bg-black sm:h-64 xl:h-[300px]")}>
+        <div className={cn("relative h-56 w-full overflow-hidden rounded-xl border border-white/[0.1] bg-black sm:h-64 xl:h-[300px]")}>
           <div className="scanline absolute inset-0" aria-hidden="true" />
           <div
             ref={scrollRef}
@@ -157,7 +157,7 @@ export function VncConsolePanel({
             )}
           </div>
           {/* Screen footer bar */}
-          <div className="absolute inset-x-0 bottom-0 flex h-8 items-center justify-between border-t border-edge/60 bg-black/80 px-3 backdrop-blur-sm">
+          <div className="absolute inset-x-0 bottom-0 flex h-8 items-center justify-between border-t border-white/[0.08] bg-black/70 px-3 backdrop-blur-sm">
             <span className="font-mono text-[10px] text-muted">1920x1080 @ 60 FPS</span>
             <span className="font-mono text-[10px] text-success">connected - wss://console.aetheris.enterprise</span>
           </div>
