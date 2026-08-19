@@ -1,19 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { CreditCard, Monitor, Radio, Server } from "lucide-react";
+import { CreditCard, Monitor, Radio, Rocket, Server } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { useWhitelabel } from "@/lib/theme/WhitelabelProvider";
 import type { AccentName } from "@/lib/config/whitelabel";
+import { ThemeToggle } from "@/components/website/ThemeToggle";
 import { VncConsolePanel } from "@/components/website/demo/panels/VncConsolePanel";
 import { NodeManagerPanel } from "@/components/website/demo/panels/NodeManagerPanel";
 import { BillingEnginePanel } from "@/components/website/demo/panels/BillingEnginePanel";
+import { ProvisioningPanel } from "@/components/website/demo/panels/ProvisioningPanel";
 
-type DemoTabId = "vnc" | "nodes" | "billing";
+type DemoTabId = "vnc" | "nodes" | "provision" | "billing";
 
 const TABS: Array<{ id: DemoTabId; label: string; icon: typeof Monitor }> = [
   { id: "vnc", label: "Client VNC Console", icon: Monitor },
   { id: "nodes", label: "Admin Node Manager", icon: Server },
+  { id: "provision", label: "Provisioning", icon: Rocket },
   { id: "billing", label: "Billing Engine", icon: CreditCard }
 ];
 
@@ -27,8 +30,9 @@ const ACCENT_SWATCHES: Array<{ id: AccentName; label: string; color: string }> =
  * InteractiveDemo
  *
  * Live product preview frame. Visitors can switch between the Client VNC
- * Console, Admin Node Manager and Billing Engine, and change the platform
- * accent in real time.
+ * Console, Admin Node Manager, the Provisioning wizard and the Billing
+ * Engine, change the platform accent, and flip the light/dark/system theme
+ * in real time.
  *
  * The panel host has a fixed height so tab switches never shift layout
  * (CLS = 0). Panels consume the MockDriver, which mirrors the production
@@ -50,12 +54,13 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
       )}
       aria-label="Aetheris interactive product demo"
     >
-      <div className="flex h-full flex-col overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-b from-[#141418] to-[#0D0D10]">
+      <div className="flex h-full flex-col overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-b from-surface to-base">
         {/* Header */}
-        <div className="flex h-14 shrink-0 items-center justify-between border-b border-white/[0.06] px-4 sm:px-5">
+        <div className="flex h-14 shrink-0 items-center justify-between border-b border-edge px-4 sm:px-5">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-extrabold text-base shadow-[0_0_16px_-2px_color-mix(in_srgb,var(--aetheris-accent)_60%,transparent)]">
-              A
+            <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-lg bg-raised ring-1 ring-edge">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/icon.png" alt="" className="h-full w-full object-cover" />
             </span>
             <span className="hidden text-sm font-semibold tracking-tight sm:block">
               Control plane preview
@@ -63,8 +68,9 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle className="hidden md:flex" />
             <div
-              className="flex items-center gap-1 rounded-lg border border-white/[0.06] bg-white/[0.03] p-1"
+              className="flex items-center gap-1 rounded-lg border border-edge bg-base/40 p-1"
               role="group"
               aria-label="Platform accent color"
             >
@@ -76,8 +82,8 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
                   className={cn(
                     "flex h-6 w-6 items-center justify-center rounded-md transition-all duration-150",
                     accent === swatch.id
-                      ? "bg-white/[0.08] ring-1 ring-accent/40"
-                      : "hover:bg-white/[0.04]"
+                      ? "bg-raised ring-1 ring-accent/40"
+                      : "hover:bg-raised/70"
                   )}
                   style={{ backgroundColor: accent === swatch.id ? swatch.color : "transparent" }}
                   aria-label={`Switch accent to ${swatch.id}`}
@@ -94,8 +100,8 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
         </div>
 
         {/* Tab bar: segmented control */}
-        <div className="flex shrink-0 items-center justify-center border-b border-white/[0.06] px-4 py-3">
-          <div role="tablist" aria-label="Demo panels" className="flex items-center gap-1 rounded-xl border border-white/[0.06] bg-black/30 p-1">
+        <div className="flex shrink-0 items-center justify-center border-b border-edge px-4 py-3">
+          <div role="tablist" aria-label="Demo panels" className="flex items-center gap-1 rounded-xl border border-edge bg-base/40 p-1">
             {TABS.map((tab) => {
               const Icon = tab.icon;
               const active = activeTab === tab.id;
@@ -111,7 +117,7 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
                   className={cn(
                     "relative flex h-9 items-center gap-2 rounded-lg px-3.5 text-sm font-medium transition-all duration-200 sm:px-4",
                     active
-                      ? "border border-white/[0.08] bg-white/[0.06] text-ink shadow-sm"
+                      ? "border border-edge bg-raised text-ink shadow-sm"
                       : "border border-transparent text-muted hover:text-ink"
                   )}
                 >
@@ -141,6 +147,14 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
             className={cn("absolute inset-0", activeTab !== "nodes" && "hidden")}
           >
             <NodeManagerPanel />
+          </div>
+          <div
+            id="demo-panel-provision"
+            role="tabpanel"
+            aria-labelledby="demo-tab-provision"
+            className={cn("absolute inset-0", activeTab !== "provision" && "hidden")}
+          >
+            <ProvisioningPanel />
           </div>
           <div
             id="demo-panel-billing"

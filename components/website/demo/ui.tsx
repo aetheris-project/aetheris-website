@@ -24,7 +24,7 @@ export function StatusPill({ tone, children }: { tone: Tone; children: ReactNode
   return (
     <span
       className={cn(
-        "inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 text-xs font-medium backdrop-blur-sm",
+        "inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-edge bg-raised/70 px-2.5 text-xs font-medium backdrop-blur-sm",
         TONE_TEXT[tone]
       )}
     >
@@ -45,7 +45,7 @@ export function Gauge({ label, value, display }: { label: string; value: number;
         <span className="font-mono text-xs text-ink">{display}</span>
       </div>
       <div
-        className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]"
+        className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-raised"
         role="meter"
         aria-valuenow={Math.round(value)}
         aria-valuemin={0}
@@ -64,7 +64,7 @@ export function Gauge({ label, value, display }: { label: string; value: number;
 export function MiniBar({ value }: { value: number }) {
   return (
     <div
-      className="h-1 w-16 overflow-hidden rounded-full bg-white/[0.06]"
+      className="h-1 w-16 overflow-hidden rounded-full bg-raised"
       role="meter"
       aria-valuenow={Math.round(value)}
       aria-valuemin={0}
@@ -91,7 +91,7 @@ export function Toast({ message, tone = "accent" }: { message: string; tone?: To
     <div
       role="status"
       className={cn(
-        "flex h-10 shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-[#1A1A1F] px-3.5 text-xs font-medium text-ink shadow-lg shadow-black/40",
+        "flex h-10 shrink-0 items-center gap-2 rounded-xl border border-edge bg-raised px-3.5 text-xs font-medium text-ink shadow-lg shadow-base/40",
         "animate-fade-up"
       )}
     >

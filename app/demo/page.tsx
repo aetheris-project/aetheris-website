@@ -20,7 +20,7 @@ export default function DemoPage() {
         <section className="mx-auto max-w-7xl px-6 py-14">
           <Link
             href="/"
-            className="inline-flex h-8 items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-ink"
+            className="inline-flex h-8 items-center gap-2 rounded-lg border border-edge bg-raised/70 px-3 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-ink"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Back to home
@@ -33,10 +33,11 @@ export default function DemoPage() {
               Aetheris control plane, <span className="text-gradient">live</span>
             </h1>
             <p className="relative mt-5 text-pretty text-base leading-7 text-muted">
-              Switch between the client VNC console, the admin node manager and
-              the billing engine. Every panel is a real React component running
-              against a mock data driver that mirrors the production API
-              contract.
+              Switch between the client VNC console, the admin node manager, the
+              provisioning wizard and the billing engine. Every panel is a real
+              React component running against a mock data driver that mirrors the
+              production API contract, and the whole preview follows the
+              light, dark and system themes.
             </p>
           </div>
 

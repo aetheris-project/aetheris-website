@@ -33,8 +33,9 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="space-y-4 md:col-span-2">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base">
-              A
+            <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-[10px] bg-raised ring-1 ring-edge">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/icon.png" alt="" className="h-full w-full object-cover" />
             </span>
             <span className="text-[15px] font-semibold tracking-tight">{config.brand.name}</span>
           </div>

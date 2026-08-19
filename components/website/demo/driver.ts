@@ -10,13 +10,19 @@ import {
   DEMO_INVOICES,
   DEMO_NODES,
   DEMO_PAYMENT_METHOD,
+  DEMO_PLANS,
   DEMO_SERVERS,
+  DEMO_TEMPLATES,
   type DemoInvoice,
   type DemoNode,
   type DemoPaymentMethod,
+  type DemoPlan,
   type DemoServers,
+  type DemoTemplate,
   type InvoiceStatus,
-  type PowerSignal
+  type PowerSignal,
+  type ProvisionRequest,
+  type ProvisionResult
 } from "./data";
 
 const LATENCY_MS = 240;
@@ -53,6 +59,9 @@ export interface MockDriver {
   listInvoices(): Promise<DemoInvoice[]>;
   payInvoice(invoiceId: string): Promise<PayInvoiceResult>;
   getPaymentMethod(): Promise<DemoPaymentMethod>;
+  listTemplates(): Promise<DemoTemplate[]>;
+  listPlans(): Promise<DemoPlan[]>;
+  provisionServer(request: ProvisionRequest): Promise<ProvisionResult>;
 }
 
 export const mockDriver: MockDriver = {
@@ -96,5 +105,30 @@ export const mockDriver: MockDriver = {
   async getPaymentMethod() {
     await delay(120);
     return DEMO_PAYMENT_METHOD;
+  },
+
+  async listTemplates() {
+    await delay(LATENCY_MS);
+    return DEMO_TEMPLATES;
+  },
+
+  async listPlans() {
+    await delay(120);
+    return DEMO_PLANS;
+  },
+
+  async provisionServer(request: ProvisionRequest) {
+    // Total simulated provisioning time (~2.6s) matches the stage animation.
+    await delay(2600);
+    const template = DEMO_TEMPLATES.find((candidate) => candidate.id === request.templateId) ?? DEMO_TEMPLATES[0];
+    const node = DEMO_NODES.find((candidate) => candidate.id === request.nodeId) ?? DEMO_NODES[0];
+    const octet = 20 + Math.floor(Math.random() * 100);
+    return {
+      serverId: `${template.id}-${node.id}-${Math.random().toString(16).slice(2, 8)}`,
+      name: `${template.name.replace(/\s+/g, "")}-${octet}`,
+      ipv4: `10.40.0.${octet}`,
+      template: template.name,
+      node: node.name
+    };
   }
 };

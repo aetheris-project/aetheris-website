@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "@/app/globals.css";
 import { WhitelabelProvider } from "@/lib/theme/WhitelabelProvider";
+import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 import { DEFAULT_WHITELABEL } from "@/lib/config/whitelabel";
 import {
   faqJsonLd,
@@ -77,12 +78,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans`}>
+        {/* Apply the persisted theme before first paint to avoid a flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("aetheris-theme")||"dark";var r=t==="system"?((window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark"):t;document.documentElement.setAttribute("data-theme",r);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`
+          }}
+        />
         <WhitelabelProvider>
-          {children}
-          <JsonLdScript data={organizationJsonLd(DEFAULT_WHITELABEL)} />
-          <JsonLdScript data={productJsonLd(DEFAULT_WHITELABEL)} />
-          <JsonLdScript data={softwareApplicationJsonLd(DEFAULT_WHITELABEL)} />
-          <JsonLdScript data={faqJsonLd(FAQ_ITEMS)} />
+          <ThemeProvider>
+            {children}
+            <JsonLdScript data={organizationJsonLd(DEFAULT_WHITELABEL)} />
+            <JsonLdScript data={productJsonLd(DEFAULT_WHITELABEL)} />
+            <JsonLdScript data={softwareApplicationJsonLd(DEFAULT_WHITELABEL)} />
+            <JsonLdScript data={faqJsonLd(FAQ_ITEMS)} />
+          </ThemeProvider>
         </WhitelabelProvider>
       </body>
     </html>

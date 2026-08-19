@@ -124,8 +124,8 @@ function HeroPreview() {
           aria-hidden="true"
         >
           {/* Window chrome */}
-          <div className="flex h-12 items-center justify-center border-b border-white/[0.06]">
-            <div className="flex items-center gap-2 rounded-lg border border-white/[0.06] bg-black/30 px-3 py-1 font-mono text-[11px] text-muted">
+          <div className="flex h-12 items-center justify-center border-b border-edge">
+            <div className="flex items-center gap-2 rounded-lg border border-edge bg-base/40 px-3 py-1 font-mono text-[11px] text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-success" />
               app.aetheris.enterprise/admin
             </div>
@@ -133,7 +133,7 @@ function HeroPreview() {
 
           <div className="flex">
             {/* Sidebar */}
-            <div className="hidden w-44 shrink-0 flex-col gap-1 border-r border-white/[0.06] p-3 sm:flex">
+            <div className="hidden w-44 shrink-0 flex-col gap-1 border-r border-edge p-3 sm:flex">
               {navItems.map((item) => (
                 <div
                   key={item.label}
@@ -146,9 +146,9 @@ function HeroPreview() {
                   {item.label}
                 </div>
               ))}
-              <div className="mt-auto rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+              <div className="mt-auto rounded-xl border border-edge bg-raised/50 p-3">
                 <div className="text-[10px] font-medium uppercase tracking-wider text-faint">Node load</div>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-raised">
                   <div className="h-full w-2/3 rounded-full bg-accent" />
                 </div>
                 <div className="mt-1 font-mono text-[10px] text-muted">62%</div>
@@ -177,7 +177,7 @@ function HeroPreview() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3.5 transition-colors duration-200 hover:border-accent/25"
+                    className="rounded-xl border border-edge bg-raised/50 p-3.5 transition-colors duration-200 hover:border-accent/25"
                   >
                     <div className="text-[10px] font-medium uppercase tracking-wider text-faint">{stat.label}</div>
                     <div className="mt-1 text-lg font-bold tracking-tight">{stat.value}</div>
@@ -188,7 +188,7 @@ function HeroPreview() {
 
               {/* Revenue chart + server list */}
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
+                <div className="rounded-xl border border-edge bg-raised/50 p-4">
                   <div className="text-[10px] font-medium uppercase tracking-wider text-faint">
                     Revenue, last 7 days
                   </div>
@@ -202,7 +202,7 @@ function HeroPreview() {
                     ))}
                   </div>
                 </div>
-                <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
+                <div className="rounded-xl border border-edge bg-raised/50 p-4">
                   <div className="text-[10px] font-medium uppercase tracking-wider text-faint">
                     Recently provisioned
                   </div>
@@ -214,7 +214,7 @@ function HeroPreview() {
                     ].map((server) => (
                       <div
                         key={server.name}
-                        className="flex items-center justify-between rounded-lg border border-white/[0.06] px-3 py-2"
+                        className="flex items-center justify-between rounded-lg border border-edge px-3 py-2"
                       >
                         <span className="font-mono text-[11px]">{server.name}</span>
                         <span
@@ -254,7 +254,7 @@ export default function HomePage() {
           />
           <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-24 text-center sm:pt-32">
             <div className="animate-fade-up">
-              <div className="mx-auto mb-6 inline-flex h-7 items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 text-xs font-medium text-muted backdrop-blur-sm">
+              <div className="mx-auto mb-6 inline-flex h-7 items-center gap-2 rounded-full border border-edge bg-raised/70 px-4 text-xs font-medium text-muted backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent" />
                 v1.0.0 - billing and virtualization control plane
               </div>
@@ -282,7 +282,7 @@ export default function HomePage() {
         </section>
 
         {/* Stats band */}
-        <section className="border-y border-white/[0.06] bg-white/[0.02]">
+        <section className="border-y border-edge bg-raised/50">
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px px-6 py-10 sm:grid-cols-4">
             {STATS.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-1 py-2 text-center">
@@ -326,7 +326,7 @@ export default function HomePage() {
                       {["Invoices", "Subscriptions", "Proration", "Dunning", "Tax"].map((chip) => (
                         <span
                           key={chip}
-                          className="inline-flex h-7 items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-3 text-xs text-muted"
+                          className="inline-flex h-7 items-center rounded-full border border-edge bg-raised/70 px-3 text-xs text-muted"
                         >
                           {chip}
                         </span>
@@ -340,7 +340,7 @@ export default function HomePage() {
         </section>
 
         {/* Integrations */}
-        <section id="integrations" className="relative overflow-hidden border-y border-white/[0.06] bg-surface">
+        <section id="integrations" className="relative overflow-hidden border-y border-edge bg-surface">
           <div className="absolute -left-32 top-1/2 h-72 w-72 -translate-y-1/2 glow-accent opacity-60" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
             <div className="max-w-2xl">
@@ -388,7 +388,7 @@ export default function HomePage() {
                 <article
                   className={`relative flex h-full flex-col rounded-2xl border p-7 ${
                     plan.highlighted
-                      ? "border-transparent bg-gradient-to-b from-[#15151A] to-[#0E0E11]"
+                      ? "border-transparent bg-gradient-to-b from-surface to-raised"
                       : "aetheris-card"
                   }`}
                 >
@@ -422,7 +422,7 @@ export default function HomePage() {
         </section>
 
         {/* FAQ */}
-        <section className="relative overflow-hidden border-y border-white/[0.06] bg-surface">
+        <section className="relative overflow-hidden border-y border-edge bg-surface">
           <div className="absolute -right-32 top-1/3 h-72 w-72 glow-accent opacity-50" aria-hidden="true" />
           <div className="relative mx-auto max-w-3xl scroll-mt-24 px-6 py-24">
             <h2 className="text-center text-3xl font-bold tracking-tighter sm:text-4xl">
@@ -434,7 +434,7 @@ export default function HomePage() {
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold tracking-tight">
                     {item.question}
                     <span
-                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-muted transition-transform duration-200 group-open:rotate-45"
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-edge bg-raised/70 text-muted transition-transform duration-200 group-open:rotate-45"
                       aria-hidden="true"
                     >
                       +
