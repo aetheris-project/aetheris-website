@@ -105,7 +105,7 @@ export default async function StorePage() {
         <section className="relative overflow-hidden">
           <div className="hero-grid absolute inset-0" aria-hidden="true" />
           <div
-            className="absolute -top-40 left-1/2 h-[30rem] w-[52rem] -translate-x-1/2 rounded-full glow-accent"
+            className="absolute -top-40 left-1/2 h-[30rem] w-[52rem] -translate-x-1/2 rounded-full animate-orb glow-accent"
             aria-hidden="true"
           />
           <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-24 text-center sm:pt-28">
@@ -171,7 +171,7 @@ export default async function StorePage() {
                   className="aetheris-card aetheris-card-hover flex flex-col p-6"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent">
+              className="flex h-12 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent shadow-[0_0_24px_-8px_color-mix(in_srgb,rgb(var(--aetheris-accent))_55%,transparent)]"
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <span className="inline-flex h-6 items-center gap-1 rounded-full border border-success/30 bg-success/10 px-2.5 text-[10px] font-semibold uppercase tracking-wider text-success">

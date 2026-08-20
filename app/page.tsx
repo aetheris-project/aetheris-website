@@ -138,18 +138,24 @@ function HeroPreview() {
 
   return (
     <div className="relative mx-auto mt-20 max-w-5xl animate-fade-up" style={{ animationDelay: "180ms" }}>
-      <div className="absolute -inset-x-12 -top-12 h-80 glow-accent" aria-hidden="true" />
+      <div className="absolute -inset-x-12 -top-12 h-80 animate-orb glow-accent" aria-hidden="true" />
       <div className="aetheris-frame relative shadow-[0_40px_120px_-40px_rgb(0_0_0/0.9)]">
         <div
-          className="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-b from-[#131317] to-[#0C0C0F]"
+          className="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-b from-[#16161c] to-[#0C0C0F]"
           aria-hidden="true"
         >
           {/* Window chrome */}
-          <div className="flex h-12 items-center justify-center border-b border-edge">
+          <div className="flex h-12 items-center justify-between border-b border-edge px-4">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+            </div>
             <div className="flex items-center gap-2 rounded-lg border border-edge bg-base/40 px-3 py-1 font-mono text-[11px] text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-success" />
               aetheris-panel.vercel.app/admin
             </div>
+            <span className="w-10" />
           </div>
 
           <div className="flex">
@@ -270,7 +276,7 @@ export default function HomePage() {
         <section className="relative overflow-hidden">
           <div className="hero-grid absolute inset-0" aria-hidden="true" />
           <div
-            className="absolute -top-56 left-1/2 h-[26rem] w-[44rem] -translate-x-1/2 rounded-full glow-accent opacity-60"
+            className="absolute -top-56 left-1/2 h-[26rem] w-[44rem] -translate-x-1/2 rounded-full animate-orb glow-accent opacity-70"
             aria-hidden="true"
           />
           <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-24 text-center sm:pt-32">
@@ -337,7 +343,7 @@ export default function HomePage() {
                     feature.wide ? "md:col-span-2 lg:col-span-1 lg:row-span-1" : ""
                   }`}
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent shadow-[0_0_24px_-8px_color-mix(in_srgb,rgb(var(--aetheris-accent))_55%,transparent)]">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold tracking-tight">{feature.title}</h3>
@@ -380,7 +386,7 @@ export default function HomePage() {
                 return (
                   <article key={step.title} className="aetheris-card aetheris-card-hover p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent shadow-[0_0_24px_-8px_color-mix(in_srgb,rgb(var(--aetheris-accent))_55%,transparent)]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </span>
                       <span className="font-mono text-xs text-faint">0{index + 1}</span>

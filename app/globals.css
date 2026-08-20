@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 /*
- * Aetheris Design System v2
- * Deep charcoal base with layered surfaces, glassmorphism, gradient accents
- * and motion that never shifts layout. Accent colors are injected at runtime
- * through data-accent (emerald / indigo / amber).
+ * Aetheris Design System v3
+ * Deep charcoal base with layered surfaces, film grain, dual-orb lighting,
+ * glassmorphism, gradient accents and motion that never shifts layout.
+ * Accent colors are injected at runtime through data-accent.
  */
 
 :root {
@@ -66,8 +66,24 @@
   --aetheris-accent-soft: rgba(245, 158, 11, 0.1);
 }
 
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(1100px 480px at 8% -10%, color-mix(in srgb, rgb(var(--aetheris-accent)) 12%, transparent), transparent 55%),
+    radial-gradient(800px 360px at 100% 0%, color-mix(in srgb, rgb(var(--aetheris-accent-strong)) 8%, transparent), transparent 60%);
+}
+
+[data-theme="light"] body::before {
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+}
+
 [data-theme="light"] .aetheris-card {
-  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.6), transparent 45%);
+  background-image:
+    linear-gradient(180deg, rgb(255 255 255 / 0.9), transparent 45%),
+    linear-gradient(180deg, rgb(var(--aetheris-surface)), rgb(var(--aetheris-surface)));
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.8) inset,
+    0 16px 32px -24px rgb(24 24 27 / 0.18);
 }
 
 [data-theme="light"] .aetheris-frame {
@@ -99,13 +115,28 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   background-color: rgb(var(--aetheris-bg));
+  background-image:
+    radial-gradient(1200px 520px at 12% -8%, color-mix(in srgb, rgb(var(--aetheris-accent)) 18%, transparent), transparent 58%),
+    radial-gradient(900px 420px at 92% 8%, color-mix(in srgb, rgb(var(--aetheris-accent-strong)) 12%, transparent), transparent 62%);
   color: rgb(var(--aetheris-fg));
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Guard against accidental horizontal scroll from decorative glows. */
   overflow-x: clip;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
@@ -171,8 +202,13 @@ body {
   /* ------------------------------------------------------------------ */
 
   .aetheris-card {
-    @apply relative rounded-2xl border border-edge bg-surface;
-    background-image: linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 45%);
+    @apply relative rounded-2xl border border-edge bg-surface/80 backdrop-blur-sm;
+    background-image:
+      linear-gradient(180deg, rgb(255 255 255 / 0.04), transparent 42%),
+      linear-gradient(180deg, rgb(var(--aetheris-surface) / 0.92), rgb(var(--aetheris-surface) / 0.92));
+    box-shadow:
+      0 1px 0 rgb(255 255 255 / 0.04) inset,
+      0 18px 40px -28px rgb(0 0 0 / 0.7);
   }
 
   .aetheris-card-hover {
@@ -218,7 +254,29 @@ body {
   /* ------------------------------------------------------------------ */
 
   .aetheris-input {
-    @apply h-10 w-full rounded-xl border border-edge bg-base px-3.5 text-sm text-ink placeholder:text-faint focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20;
+    @apply h-10 w-full rounded-xl border border-edge bg-base/80 px-3.5 text-sm text-ink placeholder:text-faint shadow-[inset_0_1px_0_rgb(255_255_255/0.03)] transition-shadow duration-200 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20;
+  }
+
+  .aetheris-chip {
+    @apply inline-flex h-7 items-center gap-1.5 rounded-full border border-edge bg-raised/70 px-3 text-xs text-muted backdrop-blur-sm;
+  }
+
+  .aetheris-table {
+    @apply overflow-hidden rounded-2xl border border-edge bg-surface/70 shadow-[0_18px_40px_-28px_rgb(0_0_0/0.7)] backdrop-blur-sm;
+  }
+
+  .aetheris-progress {
+    @apply h-1.5 overflow-hidden rounded-full bg-raised;
+  }
+
+  .aetheris-progress > span,
+  .aetheris-progress-bar {
+    @apply h-full rounded-full bg-accent;
+    box-shadow: 0 0 12px color-mix(in srgb, rgb(var(--aetheris-accent)) 55%, transparent);
+  }
+
+  .aetheris-icon {
+    @apply flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent shadow-[0_0_24px_-8px_color-mix(in_srgb,rgb(var(--aetheris-accent))_55%,transparent)];
   }
 }
 
@@ -228,18 +286,19 @@ body {
 
 .hero-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 100%);
 }
 
 .glow-accent {
   background: radial-gradient(
     closest-side,
-    color-mix(in srgb, rgb(var(--aetheris-accent)) 16%, transparent),
+    color-mix(in srgb, rgb(var(--aetheris-accent)) 22%, transparent),
     transparent 72%
   );
+  filter: blur(2px);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -293,6 +352,20 @@ body {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 4%, 0) scale(1.06);
+  }
+}
+
+.animate-orb {
+  animation: orb-drift 18s ease-in-out infinite;
+}
+
 .skeleton {
   background: linear-gradient(
     90deg,
@@ -323,6 +396,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
   .animate-pulse-dot,
+  .animate-orb,
   .skeleton,
   .scanline::after {
     animation: none;

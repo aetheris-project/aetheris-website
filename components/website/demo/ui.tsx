@@ -53,8 +53,14 @@ export function Gauge({ label, value, display }: { label: string; value: number;
         aria-label={label}
       >
         <div
-          className={cn("h-full rounded-full transition-[width] duration-500 ease-out", barTone)}
-          style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
+          className={cn(
+            "h-full rounded-full transition-[width] duration-500 ease-out",
+            barTone
+          )}
+          style={{
+            width: `${Math.min(100, Math.max(0, value))}%`,
+            boxShadow: "0 0 10px color-mix(in srgb, currentColor 45%, transparent)"
+          }}
         />
       </div>
     </div>

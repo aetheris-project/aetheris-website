@@ -36,11 +36,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/[0.06] bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
-        <div className="space-y-4 md:col-span-2">
+    <footer className="border-t border-edge bg-surface/80 backdrop-blur-sm">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="space-y-4 sm:col-span-2">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent">
+            <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent shadow-[0_0_20px_-4px_color-mix(in_srgb,rgb(var(--aetheris-accent))_70%,transparent)]">
               <img src={config.brand.logoUrl} alt="" className="h-6 w-6" width={24} height={24} />
             </span>
             <span className="text-[15px] font-semibold tracking-tight">{config.brand.name}</span>
@@ -73,7 +73,7 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="border-t border-white/[0.06]">
+      <div className="border-t border-edge">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
           <p>
             Copyright {year} {config.brand.name}. All rights reserved.

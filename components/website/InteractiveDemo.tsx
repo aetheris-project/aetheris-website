@@ -82,7 +82,7 @@ function NavButton({
       className={cn(
         "relative flex h-9 items-center gap-2 rounded-lg text-sm font-medium transition-all duration-200",
         "px-3.5 sm:px-4",
-        active ? "border border-edge bg-raised text-ink shadow-sm" : "border border-transparent text-muted hover:text-ink"
+        active ? "border border-accent/25 bg-accent-soft text-ink shadow-sm" : "border border-transparent text-muted hover:bg-raised/60 hover:text-ink"
       )}
     >
       <Icon className={cn("h-4 w-4", active ? "text-accent" : "")} aria-hidden="true" />

@@ -27,7 +27,7 @@ export default function DemoPage() {
           </Link>
 
           <div className="relative mx-auto mt-10 max-w-3xl text-center">
-            <div className="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 glow-accent" aria-hidden="true" />
+            <div className="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 animate-orb glow-accent" aria-hidden="true" />
             <p className="relative aetheris-kicker">Interactive preview</p>
             <h1 className="relative mt-3 text-balance text-4xl font-extrabold tracking-tighter sm:text-5xl">
               Aetheris control panel, <span className="text-gradient">live</span>

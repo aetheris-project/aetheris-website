@@ -14,13 +14,13 @@ export function SiteHeader() {
   const ctaItems = config.navigation.filter((item) => item.cta);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-edge bg-base/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-edge/80 bg-base/65 backdrop-blur-2xl">
       <nav
         className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-6"
         aria-label="Primary"
       >
         <Link href="/" className="group flex items-center gap-2.5" aria-label={`${config.brand.name} home`}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base shadow-[0_0_20px_-4px_color-mix(in_srgb,rgb(var(--aetheris-accent))_70%,transparent)] transition-transform duration-200 group-hover:scale-105">
+          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base shadow-[0_0_24px_-2px_color-mix(in_srgb,rgb(var(--aetheris-accent))_75%,transparent)] ring-1 ring-white/10 transition-transform duration-200 group-hover:scale-105">
             <img
               src={config.brand.logoUrl}
               alt=""
