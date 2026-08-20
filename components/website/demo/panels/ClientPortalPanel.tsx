@@ -6,6 +6,7 @@ import {
   ChevronRight,
   Cpu,
   Database,
+  ExternalLink,
   HardDrive,
   Loader2,
   MapPin,
@@ -13,6 +14,7 @@ import {
   Play,
   RotateCcw,
   Square,
+  TerminalSquare,
   Wifi
 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
@@ -185,6 +187,15 @@ export function ClientPortalPanel() {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <a
+                href={`https://aetheris-app.vercel.app/console/${selected.id}?client=novnc`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="aetheris-btn-secondary h-8 px-3"
+              >
+                <TerminalSquare className="h-3.5 w-3.5" aria-hidden="true" />
+                Console
+              </a>
               <button
                 type="button"
                 className="aetheris-btn-secondary h-8 px-3"
@@ -317,6 +328,15 @@ export function ClientPortalPanel() {
               <ChevronRight className="h-3 w-3" aria-hidden="true" />
               <span>{servers.length} total servers</span>
             </div>
+            <a
+              href="https://aetheris-app.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-7 items-center gap-1.5 rounded-lg border border-edge bg-raised/70 px-2.5 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-ink"
+            >
+              <ExternalLink className="h-3 w-3" aria-hidden="true" />
+              Open portal
+            </a>
             <div className="font-mono text-xs text-muted">
               Monthly total <span className="font-semibold text-ink">{currency(totalMonthly)}</span>
             </div>

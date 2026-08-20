@@ -155,7 +155,7 @@ export function ApiPanel() {
               </div>
               <pre className="overflow-x-auto bg-base p-4 font-mono text-[11px] leading-6 text-muted">
                 <code>
-                  <span className="text-success">$</span> curl https://api.aetheris.enterprise/v1/servers{"\n"}
+                  <span className="text-success">$</span> curl https://aetheris-app.vercel.app/api/v1/servers{"\n"}
                   <span className="text-muted/60">  -H</span> "Authorization: Bearer aet_live_...{"\n"}
                   <span className="text-muted/60">  -H</span> "Content-Type: application/json"{"\n"}
                   {"\n"}
@@ -199,7 +199,7 @@ export function ApiPanel() {
               <h3 className="text-xs font-semibold uppercase tracking-widest text-muted">
                 Endpoint reference
               </h3>
-              <span className="font-mono text-[11px] text-faint">api.aetheris.enterprise</span>
+              <span className="font-mono text-[11px] text-faint">aetheris-app.vercel.app/api</span>
             </div>
             <table className="w-full text-left text-sm">
               <thead className="text-xs text-muted">

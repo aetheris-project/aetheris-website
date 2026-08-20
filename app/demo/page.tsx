@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Github } from "lucide-react";
+import { ArrowLeft, BookOpen, ExternalLink, Github, ShieldCheck } from "lucide-react";
 import { SiteHeader } from "@/components/website/SiteHeader";
 import { Footer } from "@/components/website/Footer";
 import { InteractiveDemo } from "@/components/website/InteractiveDemo";
@@ -49,9 +49,17 @@ export default function DemoPage() {
           </div>
 
           <div className="mx-auto mt-10 flex max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="https://docs.aetheris.enterprise" className="aetheris-btn-secondary">
+            <Link href="https://aetheris-docs.vercel.app" className="aetheris-btn-secondary">
               <BookOpen className="h-4 w-4" aria-hidden="true" />
               Read the documentation
+            </Link>
+            <Link href="https://aetheris-app.vercel.app" className="aetheris-btn-primary">
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              Open the live console
+            </Link>
+            <Link href="https://aetheris-app.vercel.app/admin" className="aetheris-btn-secondary">
+              <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+              Admin panel
             </Link>
             <Link href="https://github.com/aetheris-project/aetheris-app" className="aetheris-btn-secondary">
               <Github className="h-4 w-4" aria-hidden="true" />

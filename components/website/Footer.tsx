@@ -16,10 +16,10 @@ const COLUMNS = [
   {
     title: "Resources",
     links: [
-      { label: "Documentation", href: "https://docs.aetheris.enterprise" },
-      { label: "Installation guide", href: "https://docs.aetheris.enterprise/wiki/installation" },
-      { label: "REST API", href: "https://docs.aetheris.enterprise/api/reference" },
-      { label: "Status", href: "https://status.aetheris.enterprise" }
+      { label: "Documentation", href: "https://aetheris-docs.vercel.app" },
+      { label: "Installation guide", href: "https://aetheris-docs.vercel.app/en/wiki/installation" },
+      { label: "REST API", href: "https://aetheris-docs.vercel.app/en/api/reference" },
+      { label: "Status", href: "https://aetheris-app.vercel.app/admin" }
     ]
   },
   {

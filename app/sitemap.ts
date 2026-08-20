@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { DEFAULT_WHITELABEL } from "@/lib/config/whitelabel";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aetheris.enterprise";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aetheris-web.vercel.app";
 
 /**
  * Dynamic sitemap. Route entries are derived from the whitelabel navigation

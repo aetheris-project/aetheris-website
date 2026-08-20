@@ -76,7 +76,7 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
     tagline: "Billing and virtualization control plane for the enterprise",
     logoUrl: "/icon.svg",
     logoDarkUrl: "/icon.svg",
-    domain: "aetheris.enterprise"
+    domain: "aetheris-web.vercel.app"
   },
   theme: {
     accent: "emerald",
@@ -89,12 +89,12 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
     { label: "Store", href: "/store", cta: false },
     { label: "Integrations", href: "#integrations", cta: false },
     { label: "Contact", href: "#contact", cta: false },
-    { label: "Documentation", href: "https://docs.aetheris.enterprise", cta: false },
-    { label: "Open Console", href: "https://app.aetheris.enterprise", cta: true }
+    { label: "Documentation", href: "https://aetheris-docs.vercel.app", cta: false },
+    { label: "Open Console", href: "https://aetheris-app.vercel.app", cta: true }
   ],
   contact: {
     email: "hello@another-horizon.eu",
-    supportUrl: "https://support.aetheris.enterprise",
+    supportUrl: "https://aetheris-docs.vercel.app/en/wiki/troubleshooting",
     twitterUrl: "https://x.com/aetheris"
   },
   seo: {

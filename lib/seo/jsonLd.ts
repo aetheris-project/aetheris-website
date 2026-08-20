@@ -5,7 +5,7 @@
 
 import type { WhitelabelConfig } from "@/lib/config/whitelabel";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aetheris.enterprise";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aetheris-web.vercel.app";
 
 export interface JsonLdNode {
   "@context": "https://schema.org";
