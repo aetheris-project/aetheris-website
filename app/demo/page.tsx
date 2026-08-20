@@ -53,11 +53,11 @@ export default function DemoPage() {
               <BookOpen className="h-4 w-4" aria-hidden="true" />
               Read the documentation
             </Link>
-            <Link href="https://aetheris-app.vercel.app" className="aetheris-btn-primary">
+            <Link href="https://aetheris-panel.vercel.app" className="aetheris-btn-primary">
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
               Open the live console
             </Link>
-            <Link href="https://aetheris-app.vercel.app/admin" className="aetheris-btn-secondary">
+            <Link href="https://aetheris-panel.vercel.app/admin" className="aetheris-btn-secondary">
               <ShieldCheck className="h-4 w-4" aria-hidden="true" />
               Admin panel
             </Link>

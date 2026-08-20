@@ -148,7 +148,7 @@ function HeroPreview() {
           <div className="flex h-12 items-center justify-center border-b border-edge">
             <div className="flex items-center gap-2 rounded-lg border border-edge bg-base/40 px-3 py-1 font-mono text-[11px] text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-success" />
-              aetheris-app.vercel.app/admin
+              aetheris-panel.vercel.app/admin
             </div>
           </div>
 

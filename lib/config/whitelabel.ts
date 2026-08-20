@@ -90,7 +90,7 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
     { label: "Integrations", href: "#integrations", cta: false },
     { label: "Contact", href: "#contact", cta: false },
     { label: "Documentation", href: "https://aetheris-docs.vercel.app", cta: false },
-    { label: "Open Console", href: "https://aetheris-app.vercel.app", cta: true }
+    { label: "Open Console", href: "https://aetheris-panel.vercel.app", cta: true }
   ],
   contact: {
     email: "hello@another-horizon.eu",

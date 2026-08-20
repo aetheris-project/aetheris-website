@@ -134,7 +134,7 @@ export function VncConsolePanel({
     }
     if (client === "novnc") {
       window.open(
-        `https://aetheris-app.vercel.app/console/${server.id}?client=novnc`,
+        `https://aetheris-panel.vercel.app/console/${server.id}?client=novnc`,
         "_blank",
         "noopener,noreferrer"
       );

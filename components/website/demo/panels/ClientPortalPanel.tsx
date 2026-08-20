@@ -188,7 +188,7 @@ export function ClientPortalPanel() {
             </div>
             <div className="flex items-center gap-2">
               <a
-                href={`https://aetheris-app.vercel.app/console/${selected.id}?client=novnc`}
+                href={`https://aetheris-panel.vercel.app/console/${selected.id}?client=novnc`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="aetheris-btn-secondary h-8 px-3"
@@ -329,7 +329,7 @@ export function ClientPortalPanel() {
               <span>{servers.length} total servers</span>
             </div>
             <a
-              href="https://aetheris-app.vercel.app"
+              href="https://aetheris-panel.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-7 items-center gap-1.5 rounded-lg border border-edge bg-raised/70 px-2.5 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-ink"

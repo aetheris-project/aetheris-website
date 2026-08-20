@@ -19,7 +19,7 @@ const COLUMNS = [
       { label: "Documentation", href: "https://aetheris-docs.vercel.app" },
       { label: "Installation guide", href: "https://aetheris-docs.vercel.app/en/wiki/installation" },
       { label: "REST API", href: "https://aetheris-docs.vercel.app/en/api/reference" },
-      { label: "Status", href: "https://aetheris-app.vercel.app/admin" }
+      { label: "Status", href: "https://aetheris-panel.vercel.app/admin" }
     ]
   },
   {
