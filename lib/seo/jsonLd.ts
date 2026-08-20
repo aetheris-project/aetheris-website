@@ -126,11 +126,11 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "What license is Aetheris released under?",
     answer:
-      "Aetheris is released under the Aetheris License v1.0, a source-available license. You may use, study, modify and share it for your own purposes, but the core, the Aetheris name and the author's credit (Leonardo Galli / Leo-Galli) may not be removed, and the software may not be sold without written permission."
+      "Aetheris is released under the GNU Affero General Public License v3.0 (AGPL-3.0). You may use, study, modify and redistribute it for any purpose, provided that any distributed or network-served modified version keeps the license, preserves the copyright notice of the original author (Leonardo Galli / Leo-Galli) and releases its source code under AGPL-3.0."
   },
   {
     question: "Can I whitelabel Aetheris if the license requires attribution?",
     answer:
-      "Yes. Whitelabeling is a built-in product feature that rebrands the interface of your own deployed instance, and is fully supported. The attribution requirement of the Aetheris License v1.0 applies to redistributed copies and derivative works: if you share or resell a copy of the software, the Aetheris name and the author's credit must be kept."
+      "Yes. Whitelabeling is a built-in product feature that rebrands the interface of your own deployed instance, and is fully supported. The attribution requirement of AGPL-3.0 applies to redistributed copies and derivative works: if you share or serve a copy of the software over a network, the copyright notice of the original author (Leonardo Galli / Leo-Galli) must be kept and the source of the modified version must be made available."
   }
 ];
