@@ -80,7 +80,7 @@ export function Footer() {
           </p>
           <div className="flex flex-col gap-1 text-right sm:items-end">
             <p className="font-mono text-[11px]">
-              v1.0.0 - billing and virtualization control plane
+              v1.0.0 - billing and virtualization control panel
             </p>
             <p>
               Licensed under the{" "}

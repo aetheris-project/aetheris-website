@@ -8,7 +8,7 @@ import { InteractiveDemo } from "@/components/website/InteractiveDemo";
 export const metadata: Metadata = {
   title: "Live Demo",
   description:
-    "Interactive preview of the Aetheris control plane: client portal, VNC console, billing engine, node manager, provisioning, whitelabeling and the API/SDK, driven by real React components with mock data."
+    "Interactive preview of the Aetheris control panel: client portal, VNC console, billing engine, node manager, provisioning, whitelabeling and the API/SDK, driven by real React components with mock data."
 };
 
 export default function DemoPage() {
@@ -30,10 +30,10 @@ export default function DemoPage() {
             <div className="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 glow-accent" aria-hidden="true" />
             <p className="relative aetheris-kicker">Interactive preview</p>
             <h1 className="relative mt-3 text-balance text-4xl font-extrabold tracking-tighter sm:text-5xl">
-              Aetheris control plane, <span className="text-gradient">live</span>
+              Aetheris control panel, <span className="text-gradient">live</span>
             </h1>
             <p className="relative mt-5 text-pretty text-base leading-7 text-muted">
-              Seven interactive panels organized like the real control plane. In the
+              Seven interactive panels organized like the real control panel. In the
               client area you get the VNC console, your servers with power control
               and backups, and the billing engine. The admin area covers node
               management, the provisioning wizard, dynamic whitelabeling with a

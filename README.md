@@ -24,10 +24,10 @@ Aetheris billing and virtualization platform.
 ## Overview
 
 Aetheris converges WHMCS, FOSSBilling, Pterodactyl Panel, Proxmox VE and
-VirtFusion into a single enterprise control plane. This repository serves the
+VirtFusion into a single enterprise control panel. This repository serves the
 public marketing surface of that platform:
 
-- **Interactive live demo** organized like the real control plane: a Client
+- **Interactive live demo** organized like the real control panel: a Client
   area (VNC console, servers, billing) and an Admin area (nodes,
   provisioning, whitelabeling, API/SDK). Every panel is a real React
   component driven by a mock data driver that mirrors the production API
@@ -106,7 +106,7 @@ client merges the remote configuration over the static default at runtime.
 ## Related repositories
 
 - [aetheris-app](https://github.com/aetheris-project/aetheris-app) - billing
-  core, admin control plane and hypervisor drivers
+  core, admin control panel and hypervisor drivers
 - [aetheris-docs](https://github.com/aetheris-project/aetheris-docs) - wiki,
   installation guides and API specifications
 

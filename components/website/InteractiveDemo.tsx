@@ -95,7 +95,7 @@ function NavButton({
 /**
  * InteractiveDemo
  *
- * Live product preview frame organized like the real control plane:
+ * Live product preview frame organized like the real control panel:
  * a Client area (VNC console, server portal, billing) and an Admin area
  * (node manager, provisioning, whitelabeling, API/SDK). Visitors can also
  * change the platform accent and flip the light/dark/system theme live.
@@ -128,7 +128,7 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
               A
             </span>
             <span className="hidden text-sm font-semibold tracking-tight sm:block">
-              Control plane preview
+              Control panel preview
             </span>
           </div>
 

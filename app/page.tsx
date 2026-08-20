@@ -52,7 +52,7 @@ const FEATURES = [
   {
     title: "Total admin control",
     description:
-      "Node management, allocation pools, nest and egg targeting, backup policies and per-client resource limits from a single control plane.",
+      "Node management, allocation pools, nest and egg targeting, backup policies and per-client resource limits from a single control panel.",
     icon: LayoutGrid
   },
   {
@@ -87,7 +87,7 @@ const STEPS = [
   {
     title: "Connect your infrastructure",
     description:
-      "Attach Pterodactyl, Proxmox VE or VirtFusion nodes in minutes. Allocation pools, nests, eggs and per-client limits are configured from the admin control plane.",
+      "Attach Pterodactyl, Proxmox VE or VirtFusion nodes in minutes. Allocation pools, nests, eggs and per-client limits are configured from the admin control panel.",
     icon: Cable
   },
   {
@@ -180,7 +180,7 @@ function HeroPreview() {
             <div className="flex-1 p-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm font-semibold tracking-tight">Control plane overview</div>
+                  <div className="text-sm font-semibold tracking-tight">Control panel overview</div>
                   <div className="mt-0.5 text-[11px] text-faint">Aggregate state across hypervisors and billing</div>
                 </div>
                 <span className="inline-flex h-6 items-center gap-1.5 rounded-full border border-accent/30 bg-accent-soft px-2.5 text-[10px] font-semibold uppercase tracking-wider text-accent">
@@ -277,10 +277,10 @@ export default function HomePage() {
             <div className="animate-fade-up">
               <div className="mx-auto mb-6 inline-flex h-7 items-center gap-2 rounded-full border border-edge bg-raised/70 px-4 text-xs font-medium text-muted backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent" />
-                v1.0.0 - billing and virtualization control plane
+                v1.0.0 - billing and virtualization control panel
               </div>
               <h1 className="mx-auto max-w-4xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tighter sm:text-6xl lg:text-7xl">
-                One control plane for <span className="text-gradient">billing, panels</span> and hypervisors
+                One control panel for <span className="text-gradient">billing, panels</span> and hypervisors
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-8 text-muted">
                 Aetheris converges WHMCS, FOSSBilling, Pterodactyl Panel, Proxmox
@@ -322,7 +322,7 @@ export default function HomePage() {
               Everything a hosting business needs
             </h2>
             <p className="mt-4 text-pretty leading-7 text-muted">
-              One control plane for billing, panel orchestration and hypervisor
+              One control panel for billing, panel orchestration and hypervisor
               management, built for operators who run infrastructure at scale.
             </p>
           </div>
@@ -401,7 +401,7 @@ export default function HomePage() {
             <div className="mx-auto max-w-2xl text-center">
               <p className="aetheris-kicker">Live preview</p>
               <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
-                Explore the control plane <span className="text-gradient">right here</span>
+                Explore the control panel <span className="text-gradient">right here</span>
               </h2>
               <p className="mt-4 text-pretty leading-7 text-muted">
                 Seven interactive panels covering the client portal, VNC console,
@@ -585,7 +585,7 @@ export default function HomePage() {
           <div className="relative mx-auto max-w-7xl px-6 py-28 text-center">
             <p className="aetheris-kicker">Get started</p>
             <h2 className="mx-auto mt-4 max-w-2xl text-balance text-4xl font-extrabold tracking-tighter sm:text-5xl">
-              See the control plane <span className="text-gradient">in action</span>
+              See the control panel <span className="text-gradient">in action</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-pretty leading-7 text-muted">
               Try the client VNC console, the admin node manager and the billing

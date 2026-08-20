@@ -78,7 +78,7 @@ const CATEGORY_META: Record<
   utility: {
     label: "Utility",
     icon: TerminalSquare,
-    description: "Reusable helpers for the control plane."
+    description: "Reusable helpers for the control panel."
   },
   panel: {
     label: "Panel",
@@ -119,7 +119,7 @@ export default async function StorePage() {
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-8 text-muted">
                 Payment gateways, notification channels and utilities that plug
-                straight into your control plane. Every entry is a community
+                straight into your control panel. Every entry is a community
                 contribution accepted through pull request review.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

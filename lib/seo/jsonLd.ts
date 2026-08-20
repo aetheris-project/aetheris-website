@@ -96,7 +96,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "What does Aetheris replace?",
     answer:
-      "Aetheris converges WHMCS, FOSSBilling, Pterodactyl Panel, Proxmox VE and VirtFusion into one control plane: one billing engine, one client portal, and one set of hypervisor drivers."
+      "Aetheris converges WHMCS, FOSSBilling, Pterodactyl Panel, Proxmox VE and VirtFusion into one control panel: one billing engine, one client portal, and one set of hypervisor drivers."
   },
   {
     question: "Which hypervisors and panels does Aetheris integrate with natively?",

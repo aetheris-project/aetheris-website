@@ -73,7 +73,7 @@ export interface WhitelabelConfig {
 export const DEFAULT_WHITELABEL: WhitelabelConfig = {
   brand: {
     name: "Aetheris",
-    tagline: "Billing and virtualization control plane for the enterprise",
+    tagline: "Billing and virtualization control panel for the enterprise",
     logoUrl: "/icon.svg",
     logoDarkUrl: "/icon.svg",
     domain: "aetheris-web.vercel.app"
@@ -98,7 +98,7 @@ export const DEFAULT_WHITELABEL: WhitelabelConfig = {
     twitterUrl: "https://x.com/aetheris"
   },
   seo: {
-    defaultTitle: "Aetheris - Billing and Virtualization Control Plane",
+    defaultTitle: "Aetheris - Billing and Virtualization Control Panel",
     defaultDescription:
       "Aetheris unifies WHMCS, FOSSBilling, Pterodactyl, Proxmox VE and VirtFusion into a single enterprise billing and virtualization management platform.",
     ogImage: "/api/og",
