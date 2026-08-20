@@ -84,9 +84,9 @@ export function WhitelabelPanel() {
   const showLogo = Boolean(logoUrl.trim()) && logoUrl.trim() !== "/logo.svg";
 
   return (
-    <div className="grid h-full grid-cols-[1.05fr_1fr] overflow-hidden">
+    <div className="grid h-full grid-cols-1 overflow-y-auto lg:grid-cols-[1.05fr_1fr] lg:overflow-hidden">
       {/* Editor */}
-      <div className="overflow-y-auto border-r border-edge">
+      <div className="overflow-y-auto border-b border-edge lg:border-b-0 lg:border-r">
         <div className="border-b border-edge px-4 py-3">
           <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
             <Palette className="h-3.5 w-3.5" aria-hidden="true" />
