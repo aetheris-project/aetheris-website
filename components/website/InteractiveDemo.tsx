@@ -124,7 +124,7 @@ export function InteractiveDemo({ tall = false }: { tall?: boolean }) {
         {/* Header */}
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-edge px-4 sm:px-5">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-extrabold text-base shadow-[0_0_16px_-2px_color-mix(in_srgb,var(--aetheris-accent)_60%,transparent)]">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-extrabold text-base shadow-[0_0_16px_-2px_color-mix(in_srgb,rgb(var(--aetheris-accent))_60%,transparent)]">
               A
             </span>
             <span className="hidden text-sm font-semibold tracking-tight sm:block">

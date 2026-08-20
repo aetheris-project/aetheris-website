@@ -20,7 +20,7 @@ export function SiteHeader() {
         aria-label="Primary"
       >
         <Link href="/" className="group flex items-center gap-2.5" aria-label={`${config.brand.name} home`}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base shadow-[0_0_20px_-4px_color-mix(in_srgb,var(--aetheris-accent)_70%,transparent)] transition-transform duration-200 group-hover:scale-105">
+          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-sm font-extrabold text-base shadow-[0_0_20px_-4px_color-mix(in_srgb,rgb(var(--aetheris-accent))_70%,transparent)] transition-transform duration-200 group-hover:scale-105">
             <img
               src={config.brand.logoUrl}
               alt=""

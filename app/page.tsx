@@ -270,7 +270,7 @@ export default function HomePage() {
         <section className="relative overflow-hidden">
           <div className="hero-grid absolute inset-0" aria-hidden="true" />
           <div
-            className="absolute -top-40 left-1/2 h-[34rem] w-[52rem] -translate-x-1/2 rounded-full glow-accent"
+            className="absolute -top-56 left-1/2 h-[26rem] w-[44rem] -translate-x-1/2 rounded-full glow-accent opacity-60"
             aria-hidden="true"
           />
           <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-24 text-center sm:pt-32">
