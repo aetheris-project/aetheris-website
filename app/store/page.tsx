@@ -84,6 +84,11 @@ const CATEGORY_META: Record<
     label: "Panel",
     icon: Package,
     description: "Admin panel UI extensions."
+  },
+  authentication: {
+    label: "Authentication",
+    icon: ShieldCheck,
+    description: "Social login and SSO providers for the control panel."
   }
 };
 
@@ -171,7 +176,7 @@ export default async function StorePage() {
                   className="aetheris-card aetheris-card-hover flex flex-col p-6"
                 >
                   <div className="flex items-start justify-between gap-3">
-              className="flex h-12 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent shadow-[0_0_24px_-8px_color-mix(in_srgb,rgb(var(--aetheris-accent))_55%,transparent)]"
+                    <span className="flex h-12 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent shadow-[0_0_24px_-8px_color-mix(in_srgb,rgb(var(--aetheris-accent))_55%,transparent)]">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <span className="inline-flex h-6 items-center gap-1 rounded-full border border-success/30 bg-success/10 px-2.5 text-[10px] font-semibold uppercase tracking-wider text-success">
