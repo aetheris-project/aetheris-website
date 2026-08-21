@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useWhitelabel } from "@/lib/theme/WhitelabelProvider";
 import { ThemeToggle } from "@/components/website/ThemeToggle";
+import { LanguageTranslator } from "@/components/website/LanguageTranslator";
 
 export function SiteHeader() {
   const { config } = useWhitelabel();
@@ -45,6 +46,7 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-2">
+          <LanguageTranslator className="hidden sm:flex" />
           <ThemeToggle className="hidden sm:flex" />
           {ctaItems.map((item) => (
             <Link key={item.label} href={item.href} className="aetheris-btn-primary hidden h-9 px-4 sm:inline-flex">
@@ -91,9 +93,15 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <div className="mt-2 flex items-center justify-between rounded-lg border border-edge bg-raised/50 px-3.5 py-2.5">
-              <span className="text-sm text-muted">Theme</span>
-              <ThemeToggle />
+            <div className="mt-2 grid grid-cols-2 gap-2 rounded-lg border border-edge bg-raised/50 p-2">
+              <div className="flex items-center justify-between rounded-md px-2 py-1.5">
+                <span className="text-xs text-muted">Language</span>
+                <LanguageTranslator />
+              </div>
+              <div className="flex items-center justify-between rounded-md px-2 py-1.5">
+                <span className="text-xs text-muted">Theme</span>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </div>

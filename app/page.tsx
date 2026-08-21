@@ -1,15 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowRight,
   Boxes,
   Cable,
+  Check,
   Clock,
+  Copy,
   CreditCard,
   Globe,
   Heart,
   LayoutGrid,
   Mail,
   Monitor,
+  MonitorPlay,
   Palette,
   ShieldCheck,
   TerminalSquare,
@@ -124,6 +130,440 @@ const CONTACT_POINTS = [
     icon: Boxes
   }
 ];
+
+function CodeBlock({ code, language = "bash" }: { code: string; language?: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (e) {
+      // ignore
+    }
+  };
+
+  return (
+    <div className="group relative">
+      <div className="absolute left-3 top-3 flex items-center gap-1.5 z-10">
+        <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+        <div className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+        <div className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+        <span className="ml-2 font-mono text-[10px] text-faint">{language}</span>
+      </div>
+      <button
+        type="button"
+        onClick={handleCopy}
+        className="absolute right-3 top-2.5 z-10 flex h-7 items-center gap-1.5 rounded-md border border-edge bg-raised px-2 text-[10px] font-medium text-muted opacity-0 transition-all duration-200 group-hover:opacity-100 hover:border-accent/30 hover:text-ink"
+      >
+        {copied ? (
+          <>
+            <Check className="h-3 w-3 text-success" />
+            Copied
+          </>
+        ) : (
+          <>
+            <Copy className="h-3 w-3" />
+            Copy
+          </>
+        )}
+      </button>
+      <pre className="overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] pt-9 pb-4 pl-4 pr-4 font-mono text-xs leading-6 text-ink shadow-[inset_0_1px_0_rgb(255_255_255/0.04)]">
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+}
+
+type OSKey = "windows" | "linux" | "macos";
+
+const OS_TABS: { key: OSKey; label: string; subtitle: string }[] = [
+  { key: "windows", label: "Windows", subtitle: "10 / 11 · 64-bit" },
+  { key: "linux", label: "Linux", subtitle: "Ubuntu / Debian / RHEL" },
+  { key: "macos", label: "macOS", subtitle: "Intel & Apple Silicon" }
+];
+
+const WINDOWS_METHODS = [
+  {
+    title: "winget install (recommended)",
+    badge: "Auto-updates",
+    badgeType: "accent" as const,
+    description: "Built into Windows 11 and the App Installer package. The fastest way to install.",
+    code: `winget install AetherisProject.AetherisWindowsInstaller`
+  },
+  {
+    title: "curl (any terminal)",
+    badge: "Latest",
+    badgeType: "success" as const,
+    description: "Download the standalone .exe directly from GitHub Releases.",
+    code: `curl -L -o aetheris-windows-installer.exe ^
+  https://github.com/aetheris-project/aetheris-windows-installer/releases/latest/download/aetheris-windows-installer.exe`
+  },
+  {
+    title: "PowerShell Invoke-WebRequest",
+    badge: "Native",
+    badgeType: "default" as const,
+    description: "Use the built-in PowerShell cmdlet if curl is not available.",
+    code: `Invoke-WebRequest -Uri https://github.com/aetheris-project/aetheris-windows-installer/releases/latest/download/aetheris-windows-installer.exe -OutFile aetheris-windows-installer.exe`
+  }
+];
+
+const CROSS_PLATFORM_METHODS: Record<OSKey, { title: string; description: string; code: string }[]> = {
+  linux: [
+    {
+      title: "Cross-platform Python installer (recommended)",
+      description: "Installs the wizard + non-interactive mode, manages systemd services, writes nginx configs.",
+      code: `sudo apt update && sudo apt install -y python3 python3-venv python3-pip
+python3 -m venv .venv
+source .venv/bin/activate
+pip install git+https://github.com/aetheris-project/aetheris-installer.git
+
+# Interactive wizard (arrow-key navigation)
+python -m aetheris_installer
+
+# Or non-interactive (headless servers)
+python -m aetheris_installer --yes`
+    },
+    {
+      title: "Production installation (Docker)",
+      description: "Run the full Aetheris stack (web, worker, backend, PostgreSQL, Redis) via Docker Compose.",
+      code: `git clone https://github.com/aetheris-project/aetheris-app.git
+cd aetheris-app
+cp .env.example .env
+# edit DATABASE_URL, REDIS_URL, AETHERIS_SECRET, AETHERIS_APP_URL
+
+docker compose up -d --build`
+    }
+  ],
+  macos: [
+    {
+      title: "Cross-platform Python installer (recommended)",
+      description: "Wizard + non-interactive mode, manages launchd plists, creates deployment layout.",
+      code: `brew install python@3.12
+python3 -m venv .venv
+source .venv/bin/activate
+pip install git+https://github.com/aetheris-project/aetheris-installer.git
+
+# Interactive curses wizard
+python -m aetheris_installer
+
+# Or fully scripted
+python -m aetheris_installer --yes --target ~/aetheris`
+    },
+    {
+      title: "Docker Desktop (quick evaluation)",
+      description: "Run the entire stack on Docker Desktop for Mac, no system installs required.",
+      code: `git clone https://github.com/aetheris-project/aetheris-app.git
+cd aetheris-app
+cp .env.example .env
+
+docker compose up -d --build
+# Web UI: http://localhost:3000
+# Backend: http://localhost:8000/health`
+    }
+  ],
+  windows: WINDOWS_METHODS
+};
+
+const LINUX_HIGHLIGHTS = [
+  "systemd service units generated automatically",
+  "Nginx + Certbot reverse proxy via --nginx flag",
+  "Ubuntu 22.04 LTS and Debian 12 supported out of the box",
+  "Works with any VPS (Hetzner, DigitalOcean, AWS, OVH, self-hosted)"
+];
+
+const MACOS_HIGHLIGHTS = [
+  "launchd plists for background services",
+  "Homebrew dependency management",
+  "Runs natively on both Apple Silicon (M1/M2/M3) and Intel",
+  "Perfect for development and testing"
+];
+
+const WINDOWS_HIGHLIGHTS = [
+  "Manages Docker Desktop + Git for Windows via winget",
+  "Choose between PostgreSQL container or local SQLite .db file",
+  "Customizable target directory during install wizard",
+  "Manage stack (start / stop / logs) from the TUI menu"
+];
+
+function OSWindowsContent() {
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {WINDOWS_HIGHLIGHTS.map((h) => (
+          <div key={h} className="flex items-start gap-2 rounded-xl border border-edge bg-raised/40 p-3">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+            <span className="text-xs leading-5 text-muted">{h}</span>
+          </div>
+        ))}
+      </div>
+      {WINDOWS_METHODS.map((m, i) => (
+        <div key={m.title} className="aetheris-card p-6 animate-card-entrance" style={{ animationDelay: `${i * 50}ms` }}>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 className="text-sm font-semibold tracking-tight">{m.title}</h3>
+              <p className="mt-1 text-xs leading-5 text-muted">{m.description}</p>
+            </div>
+            <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+              m.badgeType === "accent"
+                ? "border-accent/30 bg-accent-soft text-accent"
+                : m.badgeType === "success"
+                  ? "border-success/30 bg-success/10 text-success"
+                  : "border-edge bg-raised text-muted"
+            }`}>
+              {m.badge}
+            </span>
+          </div>
+          <div className="mt-4">
+            <CodeBlock code={m.code} language="powershell" />
+          </div>
+        </div>
+      ))}
+      <div className="aetheris-card overflow-hidden p-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">After installation</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                "Web UI: http://localhost:3000",
+                "Backend health: http://localhost:8000/health",
+                "Project lives in your chosen directory (default %USERPROFILE%\\\\aetheris)",
+                "Manage via: aetheris-windows-installer start / stop / status"
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2 text-xs leading-5 text-muted">
+                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">Requirements</h3>
+            <div className="mt-3 aetheris-table overflow-hidden text-xs">
+              <table className="w-full">
+                <thead className="bg-raised/50">
+                  <tr>
+                    <th className="px-3 py-2 text-left font-semibold text-muted">Component</th>
+                    <th className="px-3 py-2 text-left font-semibold text-muted">Minimum</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-edge">
+                  <tr>
+                    <td className="px-3 py-2 text-ink">RAM</td>
+                    <td className="px-3 py-2 text-muted">4 GB (Docker Desktop)</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Disk</td>
+                    <td className="px-3 py-2 text-muted">10 GB free</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Windows</td>
+                    <td className="px-3 py-2 text-muted">10 / 11 · 64-bit</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OSLinuxContent() {
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {LINUX_HIGHLIGHTS.map((h) => (
+          <div key={h} className="flex items-start gap-2 rounded-xl border border-edge bg-raised/40 p-3">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+            <span className="text-xs leading-5 text-muted">{h}</span>
+          </div>
+        ))}
+      </div>
+      {CROSS_PLATFORM_METHODS.linux.map((m, i) => (
+        <div key={m.title} className="aetheris-card p-6 animate-card-entrance" style={{ animationDelay: `${i * 50}ms` }}>
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">{m.title}</h3>
+            <p className="mt-1 text-xs leading-5 text-muted">{m.description}</p>
+          </div>
+          <div className="mt-4">
+            <CodeBlock code={m.code} language="bash" />
+          </div>
+        </div>
+      ))}
+      <div className="aetheris-card overflow-hidden p-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">Production deployment</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                "Non-interactive: bash bin/install.sh --yes --systemd --nginx",
+                "Install guide: aetheris-docs.vercel.app/wiki/installation",
+                "systemd + Nginx + Certbot fully automated",
+                "Super-admin created from environment variables"
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2 text-xs leading-5 text-muted">
+                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">Requirements</h3>
+            <div className="mt-3 aetheris-table overflow-hidden text-xs">
+              <table className="w-full">
+                <thead className="bg-raised/50">
+                  <tr>
+                    <th className="px-3 py-2 text-left font-semibold text-muted">Component</th>
+                    <th className="px-3 py-2 text-left font-semibold text-muted">Minimum</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-edge">
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Node.js</td>
+                    <td className="px-3 py-2 text-muted">20.x LTS</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Python</td>
+                    <td className="px-3 py-2 text-muted">3.10+</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">PostgreSQL</td>
+                    <td className="px-3 py-2 text-muted">16 (or 15)</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Redis</td>
+                    <td className="px-3 py-2 text-muted">7.x</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OSMacosContent() {
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {MACOS_HIGHLIGHTS.map((h) => (
+          <div key={h} className="flex items-start gap-2 rounded-xl border border-edge bg-raised/40 p-3">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+            <span className="text-xs leading-5 text-muted">{h}</span>
+          </div>
+        ))}
+      </div>
+      {CROSS_PLATFORM_METHODS.macos.map((m, i) => (
+        <div key={m.title} className="aetheris-card p-6 animate-card-entrance" style={{ animationDelay: `${i * 50}ms` }}>
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">{m.title}</h3>
+            <p className="mt-1 text-xs leading-5 text-muted">{m.description}</p>
+          </div>
+          <div className="mt-4">
+            <CodeBlock code={m.code} language="zsh" />
+          </div>
+        </div>
+      ))}
+      <div className="aetheris-card overflow-hidden p-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">After installation</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                "Web UI: http://localhost:3000",
+                "Backend health: http://localhost:8000/health",
+                "Stack: docker compose logs -f web / worker / backend",
+                "Target: ~/aetheris or your custom directory"
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2 text-xs leading-5 text-muted">
+                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold tracking-tight">Requirements</h3>
+            <div className="mt-3 aetheris-table overflow-hidden text-xs">
+              <table className="w-full">
+                <thead className="bg-raised/50">
+                  <tr>
+                    <th className="px-3 py-2 text-left font-semibold text-muted">Component</th>
+                    <th className="px-3 py-2 text-left font-semibold text-muted">Minimum</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-edge">
+                  <tr>
+                    <td className="px-3 py-2 text-ink">macOS</td>
+                    <td className="px-3 py-2 text-muted">12 Monterey or newer</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Docker</td>
+                    <td className="px-3 py-2 text-muted">Docker Desktop 4.25+</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Python</td>
+                    <td className="px-3 py-2 text-muted">3.12 (via Homebrew)</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 text-ink">Arch</td>
+                    <td className="px-3 py-2 text-muted">Apple Silicon (M1+) · Intel x86-64</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OSTabs() {
+  const [active, setActive] = useState<OSKey>("windows");
+
+  return (
+    <div>
+      {/* Tab bar */}
+      <div className="mx-auto flex w-full max-w-lg items-center gap-1 rounded-2xl border border-edge bg-raised/40 p-1 backdrop-blur-sm">
+        {OS_TABS.map((tab) => {
+          const isActive = active === tab.key;
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => setActive(tab.key)}
+              className={`relative flex-1 rounded-xl px-3 py-2.5 text-center transition-all duration-200 ${
+                isActive
+                  ? "bg-gradient-to-b from-[rgb(var(--aetheris-raised))] to-[rgb(var(--aetheris-surface))] text-ink shadow-[0_1px_0_rgb(255_255_255/0.05)_inset,0_6px_20px_-10px_rgb(0_0_0/0.6)]"
+                  : "text-muted hover:text-ink"
+              }`}
+            >
+              <div className={`text-xs font-semibold tracking-tight ${isActive ? "" : "opacity-90"}`}>{tab.label}</div>
+              <div className="mt-0.5 text-[10px] text-faint">{tab.subtitle}</div>
+              {isActive && (
+                <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-transparent via-accent to-transparent" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Tab content */}
+      <div className="mt-8">
+        {active === "windows" && <OSWindowsContent />}
+        {active === "linux" && <OSLinuxContent />}
+        {active === "macos" && <OSMacosContent />}
+      </div>
+    </div>
+  );
+}
 
 function HeroPreview() {
   const navItems = [
@@ -323,40 +763,26 @@ export default function HomePage() {
         {/* Download */}
         <section id="download" className="relative overflow-hidden border-y border-edge bg-surface">
           <div className="absolute -left-32 top-1/2 h-72 w-72 -translate-y-1/2 glow-accent opacity-60" aria-hidden="true" />
+          <div className="absolute -right-32 top-10 h-64 w-64 glow-accent opacity-30" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="aetheris-kicker">Download</p>
-              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
-                Get the Windows Installer <span className="text-gradient">with curl</span>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="aetheris-kicker">Get started</p>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-5xl">
+                Install Aetheris on <span className="text-gradient">any platform</span>
               </h2>
-              <p className="mt-4 text-pretty leading-7 text-muted">
-                The installer is distributed through the GitHub Releases feed.
-                Download it with curl, or install it directly with winget.
+              <p className="mt-4 text-pretty text-lg leading-8 text-muted">
+                Choose your operating system below. Two installers are available: a
+                dedicated Windows wizard and a cross-platform Python installer that
+                runs identically on Linux, macOS and Windows.
               </p>
             </div>
-            <div className="mx-auto mt-12 grid max-w-4xl gap-4 lg:grid-cols-2">
-              <div className="aetheris-card p-6">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold tracking-tight">curl (any terminal)</span>
-                  <span className="rounded-full border border-accent/30 bg-accent-soft px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">Latest</span>
-                </div>
-                <pre className="mt-4 overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] p-4 font-mono text-xs leading-6 text-ink"><code>{`curl -L -o aetheris-windows-installer.exe ^\n  https://github.com/aetheris-project/aetheris-windows-installer/releases/latest/download/aetheris-windows-installer.exe`}</code></pre>
-              </div>
-              <div className="aetheris-card p-6">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold tracking-tight">winget (recommended)</span>
-                  <span className="rounded-full border border-accent/30 bg-accent-soft px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">Auto-updates</span>
-                </div>
-                <pre className="mt-4 overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] p-4 font-mono text-xs leading-6 text-ink"><code>{`winget install AetherisProject.AetherisWindowsInstaller`}</code></pre>
-              </div>
+
+            {/* OS Selector Tabs */}
+            <div className="mx-auto mt-14 max-w-5xl">
+              <OSTabs />
             </div>
-            <div className="mx-auto mt-6 max-w-4xl">
-              <div className="aetheris-card p-6">
-                <div className="text-sm font-semibold tracking-tight">PowerShell</div>
-                <pre className="mt-4 overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] p-4 font-mono text-xs leading-6 text-ink"><code>{`Invoke-WebRequest -Uri https://github.com/aetheris-project/aetheris-windows-installer/releases/latest/download/aetheris-windows-installer.exe -OutFile aetheris-windows-installer.exe`}</code></pre>
-              </div>
-            </div>
-            <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-6 text-muted">
+
+            <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-6 text-muted">
               All components are open source under the{" "}
               <a href="https://github.com/aetheris-project" className="text-accent underline-offset-4 hover:underline" target="_blank" rel="noopener noreferrer">
                 aetheris-project
