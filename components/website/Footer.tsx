@@ -23,9 +23,18 @@ const COLUMNS = [
     ]
   },
   {
+    title: "Community",
+    links: [
+      { label: "Discord server", href: "/discord" },
+      { label: "GitHub", href: "https://github.com/aetheris-project" },
+      { label: "Donate via PayPal", href: "https://paypal.me/LeonardoGalliITA" }
+    ]
+  },
+  {
     title: "Support",
     links: [
-      { label: "Donate via PayPal", href: "https://paypal.me/LeonardoGalliITA" },
+      { label: "Documentation", href: "https://aetheris-docs.vercel.app" },
+      { label: "Contact us", href: "#contact" },
       { label: "Self-hosted or custom", href: "#contact" }
     ]
   }
