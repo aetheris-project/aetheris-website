@@ -47,15 +47,10 @@ jobs:
                 \"title\": \"$TITLE\",
                 \"url\": \"$URL\",
                 \"color\": $COLOR,
-                \"author\": {
-                  \"name\": \"aetheris-website\",
-                  \"url\": \"$AUTHOR_URL\",
-                  \"icon_url\": \"https://aetheris-web.vercel.app/logo.svg\"
-                },
                 \"fields\": [
                   {
                     \"name\": \"Repository\",
-                    \"value\": \"[aetheris-website]($AUTHOR_URL)\",
+                    \"value\": \"[__REPO__]($AUTHOR_URL)\",
                     \"inline\": true
                   },
                   {
@@ -70,7 +65,8 @@ jobs:
                   }
                 ],
                 \"footer\": {
-                  \"text\": \"Aetheris Project\"
+                  \"text\": \"__REPO__ | Aetheris Project\",
+                  \"icon_url\": \"https://aetheris-web.vercel.app/logo.svg\"
                 },
                 \"timestamp\": \"$TIMESTAMP\"
               }]
