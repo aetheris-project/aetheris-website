@@ -320,6 +320,53 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Download */}
+        <section id="download" className="relative overflow-hidden border-y border-edge bg-surface">
+          <div className="absolute -left-32 top-1/2 h-72 w-72 -translate-y-1/2 glow-accent opacity-60" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="aetheris-kicker">Download</p>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tighter sm:text-4xl">
+                Get the Windows Installer <span className="text-gradient">with curl</span>
+              </h2>
+              <p className="mt-4 text-pretty leading-7 text-muted">
+                The installer is distributed through the GitHub Releases feed.
+                Download it with curl, or install it directly with winget.
+              </p>
+            </div>
+            <div className="mx-auto mt-12 grid max-w-4xl gap-4 lg:grid-cols-2">
+              <div className="aetheris-card p-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold tracking-tight">curl (any terminal)</span>
+                  <span className="rounded-full border border-accent/30 bg-accent-soft px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">Latest</span>
+                </div>
+                <pre className="mt-4 overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] p-4 font-mono text-xs leading-6 text-ink"><code>{`curl -L -o aetheris-windows-installer.exe ^\n  https://github.com/aetheris-project/aetheris-windows-installer/releases/latest/download/aetheris-windows-installer.exe`}</code></pre>
+              </div>
+              <div className="aetheris-card p-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold tracking-tight">winget (recommended)</span>
+                  <span className="rounded-full border border-accent/30 bg-accent-soft px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">Auto-updates</span>
+                </div>
+                <pre className="mt-4 overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] p-4 font-mono text-xs leading-6 text-ink"><code>{`winget install AetherisProject.AetherisWindowsInstaller`}</code></pre>
+              </div>
+            </div>
+            <div className="mx-auto mt-6 max-w-4xl">
+              <div className="aetheris-card p-6">
+                <div className="text-sm font-semibold tracking-tight">PowerShell</div>
+                <pre className="mt-4 overflow-x-auto rounded-xl border border-edge bg-[#0C0C0F] p-4 font-mono text-xs leading-6 text-ink"><code>{`Invoke-WebRequest -Uri https://github.com/aetheris-project/aetheris-windows-installer/releases/latest/download/aetheris-windows-installer.exe -OutFile aetheris-windows-installer.exe`}</code></pre>
+              </div>
+            </div>
+            <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-6 text-muted">
+              All components are open source under the{" "}
+              <a href="https://github.com/aetheris-project" className="text-accent underline-offset-4 hover:underline" target="_blank" rel="noopener noreferrer">
+                aetheris-project
+              </a>{" "}
+              GitHub organization. Clone any repository with{" "}
+              <code className="rounded border border-edge bg-raised/70 px-1.5 py-0.5 font-mono text-xs">git clone https://github.com/aetheris-project/&lt;repo&gt;.git</code>.
+            </p>
+          </div>
+        </section>
+
         {/* Features */}
         <section id="product" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
           <div className="max-w-2xl">
