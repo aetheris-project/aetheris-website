@@ -393,12 +393,144 @@ body::before {
   animation: scanline 7s linear infinite;
 }
 
+/* ------------------------------------------------------------------ */
+/* Floating particles (hero background decoration)                     */
+/* ------------------------------------------------------------------ */
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1);
+  }
+}
+
+.animate-float-particle {
+  animation: float-up 8s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Staggered card entrance animation                                   */
+/* ------------------------------------------------------------------ */
+
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-entrance {
+  animation: card-entrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ------------------------------------------------------------------ */
+/* Gradient border shimmer (for hero frame)                            */
+/* ------------------------------------------------------------------ */
+
+@keyframes border-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.aetheris-frame-shimmer {
+  background-size: 200% 200%;
+  animation: border-shimmer 6s ease infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Glassmorphism hover glow for cards                                   */
+/* ------------------------------------------------------------------ */
+
+.aetheris-card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, rgb(var(--aetheris-accent)) 20%, transparent),
+    transparent 50%,
+    color-mix(in srgb, rgb(var(--aetheris-accent)) 10%, transparent)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.aetheris-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ */
+/* Stat counter pulse                                                  */
+/* ------------------------------------------------------------------ */
+
+@keyframes count-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-stat-pulse {
+  animation: count-pulse 3s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Typing cursor for terminal-like elements                            */
+/* ------------------------------------------------------------------ */
+
+@keyframes blink-cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink::after {
+  content: "_";
+  animation: blink-cursor 1s step-end infinite;
+  color: rgb(var(--aetheris-accent));
+  font-weight: 700;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
   .animate-pulse-dot,
   .animate-orb,
   .skeleton,
-  .scanline::after {
+  .scanline::after,
+  .animate-float-particle,
+  .animate-card-entrance,
+  .aetheris-frame-shimmer,
+  .animate-stat-pulse,
+  .cursor-blink::after {
     animation: none;
   }
   html {
